@@ -22,6 +22,7 @@ function QuestionPageRight({
   createdBy,
   isFollowing,
   isDownvoted,
+  itsOwnQuestion,
   data,
 }) {
   console.log("data", data);
@@ -65,14 +66,20 @@ function QuestionPageRight({
           name="Follow"
           isBorder={false}
           hoverColor={"hover:bg-[#efeff0]"}
-          className={`px-6  active:opacity-80 ${
+          className={`px-6  ${
+            itsOwnQuestion ? "opacity-55" : "active:opacity-80"
+          } ${
             isFollowingState
               ? "[&>svg_*]:stroke-[rgb(46,105,255)] text-[#2e69ff]"
               : "text-[var(--text-gen-color)]"
           }`}
           onClick={() => {
-            handleFollowing(createdBy, baseURL, accessToken);
-            setIsFollowingState(!isFollowingState);
+            if (itsOwnQuestion) {
+              return;
+            } else {
+              handleFollowing(createdBy, baseURL, accessToken);
+              setIsFollowingState(!isFollowingState);
+            }
           }}
         />
         <HomeThreeDotContentPopup

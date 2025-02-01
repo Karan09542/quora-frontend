@@ -171,6 +171,11 @@ body {
   margin-right: 0.5rem;
 }
 
+.content > img  {
+position: relative;
+inset: 0 -2em;
+}
+
 .superFancyBlockquote {
   color: #999;
   font-family: "Hoefler Text", Georgia, serif;

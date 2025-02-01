@@ -102,6 +102,7 @@ function QuestionPage() {
           createdBy={data?.createdBy}
           isFollowing={data?.isFollowing}
           isDownvoted={data?.isDownvoted}
+          itsOwnQuestion={data?.itsOwnQuestion}
           data={data}
           setData={setData}
         />
