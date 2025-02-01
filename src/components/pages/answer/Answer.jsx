@@ -7,7 +7,7 @@ import useResize from "../../../hooks/useResize";
 import { ToastContainer } from "react-toastify";
 import PostAnswer from "../../quoraComponents/PostAnswer";
 import { useIsToAnswerStore, useOpenModelStore } from "../../../../Store/model";
-import DisplayModePopup from "../../general-page/displayModePopup";
+import DisplayModePopup from "../../general-page/DisplayModePopup";
 import "tippy.js/dist/tippy.css";
 import Reports from "../../general-page/Reports";
 import CreatePost from "../../quoraComponents/CreatePost";
