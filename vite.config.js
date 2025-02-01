@@ -9,42 +9,42 @@ export default defineConfig({
   server: {
     proxy: {
       "/user": {
-        target: process.env.VITE_BASE_URL || "http://localhost:8000",
+        target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
         secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
       },
       "/question": {
-        target: process.env.VITE_BASE_URL || "http://localhost:8000",
+        target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
         secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
       },
       "/post": {
-        target: process.env.VITE_BASE_URL || "http://localhost:8000",
+        target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
         secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
       },
       "/report": {
-        target: process.env.VITE_BASE_URL || "http://localhost:8000",
+        target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
         secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
       },
       "/preference": {
-        target: process.env.VITE_BASE_URL || "http://localhost:8000",
+        target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
         secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
       },
       "/search-result": {
-        target: process.env.VITE_BASE_URL || "http://localhost:8000",
+        target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
         secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
       },
       "/book-mark": {
-        target: process.env.VITE_BASE_URL || "http://localhost:8000",
+        target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
         secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
       },
       "/comment": {
-        target: process.env.VITE_BASE_URL || "http://localhost:8000",
+        target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
         secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
       },
