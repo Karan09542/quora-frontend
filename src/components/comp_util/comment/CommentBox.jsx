@@ -2,14 +2,13 @@ import React, { Suspense, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Loading from "../Loading";
 import DownArrowButton from "../../buttons-fields/DownArrowButton";
-import { useBaseURLStore } from "../../../../Store/model";
 const CommentSwaha = React.lazy(() => import("./CommentSwaha"));
 const CommentInputSwaha = React.lazy(() => import("./CommentInputSwaha"));
 function CommentBox({
   isToComment,
   postId,
   userId,
-  // baseURL,
+  baseURL,
   className,
   isHeading,
   isInputRounded,
@@ -22,15 +21,17 @@ function CommentBox({
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  const baseURL = useBaseURLStore((state) => state.baseURL);
-
   const loadedPage = React.useRef(new Set());
   useEffect(() => {
     if (loadedPage.current.has(page) || !isToComment) {
       return;
     }
     setLoading(true);
-    fetch(`${baseURL}/comment/${postId}/${userId}?page=${page}&limit=5`)
+    fetch(
+      `${
+        import.meta.env?.VITE_BASE_URL
+      }/comment/${postId}/${userId}?page=${page}&limit=5`
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {

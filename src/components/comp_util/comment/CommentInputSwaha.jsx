@@ -17,7 +17,6 @@ import { commonMethodAndHeaders } from "../../../utils/handlerFetch";
 import useMention from "../../../hooks/useMention";
 import useDebounce from "../../../hooks/useDebounce";
 import { toast } from "react-toastify";
-import { stateToHTML } from "draft-js-export-html";
 
 function CommentInputSwaha({
   postId,
