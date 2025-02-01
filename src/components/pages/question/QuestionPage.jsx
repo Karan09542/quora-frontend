@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef } from "react";
+import React, { Suspense, useEffect } from "react";
 import QuestionPageLeft from "./QuestionPageLeft";
 import QuestionPageRight from "./QuestionPageRight";
 import Navbar from "../../header/Navbar";

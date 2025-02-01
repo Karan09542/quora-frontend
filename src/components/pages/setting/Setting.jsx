@@ -13,7 +13,6 @@ import LanguageRemovePopup from "../../general-page/LanguageRemovePopup";
 import OtherLanguagePopup from "../../general-page/OtherLanguagePopup";
 import AddEmail from "../../general-page/AddEmail";
 import ComboConfirmEmailPopup from "../../general-page/ComboConfirmEmailPopup";
-import Language from "./Language";
 import FollowPopup from "../../general-page/FollowPopup";
 import FollowPersonalizePopup from "../../general-page/FollowPersonalizePopup";
 

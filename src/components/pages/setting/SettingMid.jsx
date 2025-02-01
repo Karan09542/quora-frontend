@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   useAccessTokenStore,
   useBaseURLStore,
@@ -6,7 +6,6 @@ import {
   useIsCorrectPasswordStore,
   usePasswordStore,
   useSettingModelStore,
-  useSetttingManuStore,
   useUserStore,
 } from "../../../../Store/model";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";

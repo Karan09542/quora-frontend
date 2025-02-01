@@ -7,7 +7,7 @@ import CreatePost from "../quoraComponents/CreatePost";
 import { useOpenModelStore } from "../../../Store/model";
 import Reports from "../general-page/Reports";
 import OtherLanguagePopup from "../general-page/OtherLanguagePopup";
-import DisplayModePopup from "../general-page/displayModePopup";
+import DisplayModePopup from "../general-page/DisplayModePopup";
 import CreateSpacePopup from "../comp_util/spaces/popup/CreateSpacePopup";
 import InvitePopup from "../comp_util/spaces/popup/InvitePopup";
 

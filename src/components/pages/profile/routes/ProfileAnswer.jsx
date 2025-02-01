@@ -1,10 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useOutletContext } from "react-router-dom";
-import {
-  useBaseURLStore,
-  useIsLoginStore,
-  useUserStore,
-} from "../../../../../Store/model";
+import { useBaseURLStore, useIsLoginStore } from "../../../../../Store/model";
 import AnswerTile from "../../../quoraComponents/util/AnswerTile";
 import PostOfficeTempelate from "../util/PostOfficeTempelate";
 import useFetch from "../../../../hooks/useFetch";

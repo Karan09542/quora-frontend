@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import CommentSvg from "../../assets/comment.svg?react";
 import Share from "../../assets/share.svg?react";
 import { IoIosArrowForward } from "react-icons/io";

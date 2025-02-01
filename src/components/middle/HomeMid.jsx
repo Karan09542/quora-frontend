@@ -10,9 +10,6 @@ import QuoraAsk from "../../assets/ask.svg?react";
 import QuoraAnswer from "../../assets/answer.svg?react";
 import QuoraPost from "../../assets/post.svg?react";
 import Loading from "../comp_util/Loading";
-import useThrottle from "../../hooks/useThrottle";
-import { toast } from "react-toastify";
-import { use } from "react";
 
 const LazyPost = React.lazy(() => import("../quoraComponents/Post"));
 function HomeMid() {

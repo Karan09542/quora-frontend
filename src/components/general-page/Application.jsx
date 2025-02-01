@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Navbar from "../header/Navbar";
-import { useShouldFetchUserStore } from "../../../Store/model";
 import Home from "../middle/Home";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";

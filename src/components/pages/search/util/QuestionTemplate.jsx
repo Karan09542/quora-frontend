@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 import Pen from "../../../../assets/answer/pen.svg?react";
 import Wifi from "../../../../assets/answer/wifi.svg?react";
 import Request from "../../../../assets/search/request.svg?react";
-import More from "../../../../assets/more.svg?react";
-import Downvote from "../../../../assets/downvote.svg?react";
+
 import {
   useAccessTokenStore,
   useBaseURLStore,
   useIsToAnswerStore,
-  useReportStore,
 } from "../../../../../Store/model";
 import MoreMenuPopup from "../../answer/util/MoreMenuPopup";
 import { formatNumber } from "../../../../utils/formateNumber";

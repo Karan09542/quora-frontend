@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useFetch from "../../../../hooks/useFetch";
 import { useBaseURLStore, useIsLoginStore } from "../../../../../Store/model";
 import { useOutletContext } from "react-router-dom";
