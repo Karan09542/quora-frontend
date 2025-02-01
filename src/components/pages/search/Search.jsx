@@ -9,7 +9,7 @@ import PostAnswer from "../../quoraComponents/PostAnswer";
 import Reports from "../../general-page/Reports";
 import CreatePost from "../../quoraComponents/CreatePost";
 import OtherLanguagePopup from "../../general-page/OtherLanguagePopup";
-import DisplayModePopup from "../../general-page/displayModePopup";
+import DisplayModePopup from "../../general-page/DisplayModePopup";
 
 function Search() {
   const { width } = useResize();
