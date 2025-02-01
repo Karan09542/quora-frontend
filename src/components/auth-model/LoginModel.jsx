@@ -45,6 +45,7 @@ function LoginModel() {
     setLoading(true);
     fetch(`${baseURL}/user/login`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
