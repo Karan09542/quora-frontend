@@ -11,7 +11,7 @@ import {
 import CrossButton from "../../../buttons-fields/CrossButton";
 import Button from "../../../buttons-fields/Button";
 import InputField from "../../../buttons-fields/InputField";
-import PeopleCredential from "../../../../assets/profile/PeopleCredential.svg?react";
+import PeopleCredential from "../../../../assets/profile/peopleCredential.svg?react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { decorateUsername } from "../../../../utils/fn_utils";
