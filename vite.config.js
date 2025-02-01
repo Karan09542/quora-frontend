@@ -8,49 +8,23 @@ export default defineConfig({
   plugins: [react(), svgr()],
   server: {
     proxy: {
-      "/user": {
-        target: "https://quora-backend-rosy.vercel.app",
-        changeOrigin: true,
-        secure: true, // ऑटोमैटिकली सेट करेगा
-      },
-      "/question": {
-        target: "https://quora-backend-rosy.vercel.app",
-        changeOrigin: true,
-        secure: true, // ऑटोमैटिकली सेट करेगा
-      },
-      "/post": {
-        target: "https://quora-backend-rosy.vercel.app",
-        changeOrigin: true,
-        secure: true, // ऑटोमैटिकली सेट करेगा
-      },
-      "/report": {
-        target: "https://quora-backend-rosy.vercel.app",
-        changeOrigin: true,
-        secure: true, // ऑटोमैटिकली सेट करेगा
-      },
-      "/preference": {
-        target: "https://quora-backend-rosy.vercel.app",
-        changeOrigin: true,
-        secure: true, // ऑटोमैटिकली सेट करेगा
-      },
-      "/search-result": {
-        target: "https://quora-backend-rosy.vercel.app",
-        changeOrigin: true,
-        secure: true, // ऑटोमैटिकली सेट करेगा
-      },
-      "/book-mark": {
-        target: "https://quora-backend-rosy.vercel.app",
-        changeOrigin: true,
-        secure: true, // ऑटोमैटिकली सेट करेगा
-      },
-      "/comment": {
-        target: "https://quora-backend-rosy.vercel.app",
-        changeOrigin: true,
-        secure: true, // ऑटोमैटिकली सेट करेगा
-      },
+      "/user": "https://quora-backend-rosy.vercel.app",
+      "/question": "https://quora-backend-rosy.vercel.app",
+      "/post": "https://quora-backend-rosy.vercel.app",
+      "/report": "https://quora-backend-rosy.vercel.app",
+      "/preference": "https://quora-backend-rosy.vercel.app",
+      "/search-result": "https://quora-backend-rosy.vercel.app",
+      "/book-mark": "https://quora-backend-rosy.vercel.app",
+      "/comment": "https://quora-backend-rosy.vercel.app",
     },
   },
   define: {
     global: "globalThis",
   },
 });
+
+// {
+//   target: "https://quora-backend-rosy.vercel.app",
+//   changeOrigin: true,
+//   secure: true, // ऑटोमैटिकली सेट करेगा
+// },
