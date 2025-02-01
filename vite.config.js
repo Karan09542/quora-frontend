@@ -18,14 +18,14 @@ export default defineConfig({
     //   "/comment": "http://localhost:8000",
     // },
     proxy: {
-      "/user": "https://quora-backend-rosy.vercel.app",
-      "/question": "https://quora-backend-rosy.vercel.app",
-      "/post": "https://quora-backend-rosy.vercel.app",
-      "/report": "https://quora-backend-rosy.vercel.app",
-      "/preference": "https://quora-backend-rosy.vercel.app",
-      "/search-result": "https://quora-backend-rosy.vercel.app",
-      "/book-mark": "https://quora-backend-rosy.vercel.app",
-      "/comment": "https://quora-backend-rosy.vercel.app",
+      "/user": "https://quora-backend-tawny.vercel.app",
+      "/question": "https://quora-backend-tawny.vercel.app",
+      "/post": "https://quora-backend-tawny.vercel.app",
+      "/report": "https://quora-backend-tawny.vercel.app",
+      "/preference": "https://quora-backend-tawny.vercel.app",
+      "/search-result": "https://quora-backend-tawny.vercel.app",
+      "/book-mark": "https://quora-backend-tawny.vercel.app",
+      "/comment": "https://quora-backend-tawny.vercel.app",
     },
   },
   define: {
@@ -34,7 +34,7 @@ export default defineConfig({
 });
 
 // {
-//   target: "https://quora-backend-rosy.vercel.app",
+//   target: "https://quora-backend-tawny.vercel.app",
 //   changeOrigin: true,
 //   secure: true, // ऑटोमैटिकली सेट करेगा
 // },
