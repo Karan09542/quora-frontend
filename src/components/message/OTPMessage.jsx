@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { useOpenModelStore, useOtpStore } from "../../../store/model";
-import useThrottle from "../../hooks/useThrottle";
+import React from "react";
+import { useOpenModelStore, useOtpStore } from "../../../Store/model";
 import CrossButton from "../buttons-fields/CrossButton";
 import { toast } from "react-toastify";
 

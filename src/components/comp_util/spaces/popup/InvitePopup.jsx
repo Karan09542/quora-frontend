@@ -14,11 +14,8 @@ import Button from "../../../buttons-fields/Button";
 import BorderButton from "../../../buttons-fields/BorderButton";
 import { toast } from "react-toastify";
 import PostOfficeTempelate from "../../../pages/profile/util/PostOfficeTempelate";
-import { formatText } from "../../../../utils/fn_utils";
 import ProfileTempelate from "../../../pages/search/util/ProfileTempelate";
 import CheckBox from "../../../buttons-fields/CheckBox";
-import useMention from "../../../../hooks/useMention";
-import { set } from "react-hook-form";
 const InvitePopup = ({ isSelectAll = false }) => {
   React.useEffect(() => {
     document.body.style.overflow = "hidden";
