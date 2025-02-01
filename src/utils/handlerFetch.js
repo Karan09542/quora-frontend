@@ -137,6 +137,7 @@ export const getSubComments = async ({
     // fetching sub sub comments
     const res = await fetch(`${baseURL}/comment/${commentId}`, {
       headers: {
+        "Content-Type": "application/json",
         "X-UserId": userId,
       },
     });
@@ -165,24 +166,4 @@ export const getSubComments = async ({
     console.log(`error occurred on getSubSubComments: ${error}`);
     return false;
   }
-
-  // .then((res) => res.json())
-  // .then((data) => {
-  //   if (data.status === "success") {
-  //     console.log("data", data);
-  //     let updatedComments = comments?.map((comment) => {
-  //       if (comment._id === commentId) {
-  //         if (comment?.children) {
-  //           comment?.children?.push(...data?.children);
-  //         } else {
-  //           comment.children = data?.children;
-  //         }
-  //       }
-  //       return comment;
-  //     });
-
-  //     setComments(updatedComments);
-  //   }
-  // })
-  // .catch((error) => console.log(error));
 };
