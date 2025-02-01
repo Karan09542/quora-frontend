@@ -7,7 +7,7 @@ import { useIsToAnswerStore, useOpenModelStore } from "../../../../Store/model";
 import AnswerLeft from "../answer/AnswerLeft";
 import AnswerRight from "../answer/AnswerRight";
 import DraftMid from "./DraftMid";
-import DisplayModePopup from "../../general-page/displayModePopup";
+import DisplayModePopup from "../../general-page/DisplayModePopup";
 
 function QuoraDraft() {
   const { width } = useResize();
