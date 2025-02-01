@@ -11,42 +11,42 @@ export default defineConfig({
       "/user": {
         target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
-        secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
+        secure: true, // ऑटोमैटिकली सेट करेगा
       },
       "/question": {
         target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
-        secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
+        secure: true, // ऑटोमैटिकली सेट करेगा
       },
       "/post": {
         target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
-        secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
+        secure: true, // ऑटोमैटिकली सेट करेगा
       },
       "/report": {
         target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
-        secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
+        secure: true, // ऑटोमैटिकली सेट करेगा
       },
       "/preference": {
         target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
-        secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
+        secure: true, // ऑटोमैटिकली सेट करेगा
       },
       "/search-result": {
         target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
-        secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
+        secure: true, // ऑटोमैटिकली सेट करेगा
       },
       "/book-mark": {
         target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
-        secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
+        secure: true, // ऑटोमैटिकली सेट करेगा
       },
       "/comment": {
         target: "https://quora-backend-rosy.vercel.app",
         changeOrigin: true,
-        secure: process.env.VITE_BASE_URL?.startsWith("https"), // ऑटोमैटिकली सेट करेगा
+        secure: true, // ऑटोमैटिकली सेट करेगा
       },
     },
   },
