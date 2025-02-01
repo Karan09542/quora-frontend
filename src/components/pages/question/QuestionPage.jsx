@@ -4,10 +4,8 @@ import QuestionPageRight from "./QuestionPageRight";
 import Navbar from "../../header/Navbar";
 import useResize from "../../../hooks/useResize";
 import { ToastContainer } from "react-toastify";
-import useFetch from "../../../hooks/useFetch";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../comp_util/Loading";
-import { use } from "react";
 import {
   useHasQuestionStore,
   useIsLoginStore,
@@ -16,9 +14,7 @@ import {
   useUserStore,
 } from "../../../../Store/model";
 import Reports from "../../general-page/Reports";
-import DisplayModePopup from "../../general-page/displayModePopup";
-import { set } from "react-hook-form";
-import { decorateQuestion } from "../../../utils/fn_utils";
+import DisplayModePopup from "../../general-page/DisplayModePopup";
 
 const LazyPostAnswer = React.lazy(() =>
   import("../../quoraComponents/PostAnswer")

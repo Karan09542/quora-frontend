@@ -17,7 +17,7 @@ import FollowerFollowingPopup from "./popup/FollowerFollowingPopup";
 import { useParams } from "react-router-dom";
 import CredentialPopup from "./popup/CredentialPopup";
 import PostAnswer from "../../quoraComponents/PostAnswer";
-import DisplayModePopup from "../../general-page/displayModePopup";
+import DisplayModePopup from "../../general-page/DisplayModePopup";
 import PageNotFound from "../../general-page/PageNotFound";
 function Profile() {
   const baseURL = useBaseURLStore((state) => state.baseURL);
