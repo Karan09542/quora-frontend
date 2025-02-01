@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import PeoplePlus from "../../assets/iconPopup/peoplePlus.svg?react";
-import PeopleCheck from "../../assets/iconPopup/peopleCheck.svg?react";
+import PeopleCheck from "../../assets/iconPopup/PeopleCheck.svg?react";
 import { formatNumber } from "../../utils/formateNumber";
 import { useAccessTokenStore, useBaseURLStore } from "../../../Store/model";
 import { handleFollowing } from "../../utils/handlerFetch";
-import { toast } from "react-toastify";
 
 function FollowButton({
   staticIsFollowing,

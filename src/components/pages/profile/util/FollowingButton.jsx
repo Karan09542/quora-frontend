@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PeoplePlus from "../../../../assets/iconPopup/peoplePlus.svg?react";
-import PeopleCheck from "../../../../assets/iconPopup/peopleCheck.svg?react";
+import PeopleCheck from "../../../../assets/iconPopup/PeopleCheck.svg?react";
 
 function FollowingButton({
   staticIsFollowing,

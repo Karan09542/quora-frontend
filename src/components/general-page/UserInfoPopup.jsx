@@ -7,7 +7,7 @@ import Joined from "../../assets/iconPopup/joined.svg?react";
 import PeoplePlus from "../../assets/iconPopup/peoplePlus.svg?react";
 import Notify from "../../assets/notify.svg?react";
 import Ask from "../../assets/ask.svg?react";
-import PeopleCheck from "../../assets/iconPopup/peopleCheck.svg?react";
+import PeopleCheck from "../../assets/iconPopup/PeopleCheck.svg?react";
 import Shield from "../../assets/space/shield.svg?react";
 import Tippy from "@tippyjs/react";
 import { hideAll } from "tippy.js";
