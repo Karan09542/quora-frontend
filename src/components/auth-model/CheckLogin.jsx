@@ -67,7 +67,11 @@ function CheckLogin({ children }) {
       },
       credentials: "include",
     })
-      .then((response) => response.json())
+      .then((response) => {
+        console.log("headers", response.headers);
+        console.log("reponse", response);
+        return response.json();
+      })
       .then((data) => {
         if (data.status === "success") {
           setIsLogin(true);
