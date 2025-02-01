@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "../../header/Navbar";
 import { useOpenModelStore } from "../../../../Store/model";
-import DisplayModePopup from "../../general-page/displayModePopup";
+import DisplayModePopup from "../../general-page/DisplayModePopup";
 import SpaceHeader from "./SpaceHeader";
 import SpaceBottom from "./SpaceBottom";
 import { ToastContainer } from "react-toastify";
