@@ -137,7 +137,6 @@ export const getSubComments = async ({
     // fetching sub sub comments
     const res = await fetch(`${baseURL}/comment/${commentId}`, {
       headers: {
-        "Content-Type": "application/json",
         "X-UserId": userId,
       },
     });
