@@ -12,7 +12,6 @@ function CheckLogin({ children }) {
   const accessToken = useAccessTokenStore((state) => state.accessToken);
   const setUser = useUserStore((state) => state.setUser);
   const setIsLogin = useIsLoginStore((state) => state.setIsLogin);
-  const isLogin = useIsLoginStore((state) => state.isLogin);
   const shouldFetchUser = useShouldFetchUserStore(
     (state) => state.shouldFetchUser
   );
@@ -68,8 +67,6 @@ function CheckLogin({ children }) {
       credentials: "include",
     })
       .then((response) => {
-        console.log("headers", response.headers);
-        console.log("reponse", response);
         return response.json();
       })
       .then((data) => {
