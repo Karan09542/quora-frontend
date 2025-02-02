@@ -53,7 +53,6 @@ function Profile() {
       .then((data) => {
         if (data.status === "success") {
           setProfileUser(data.user);
-          console.log("profile user", data);
         }
       })
       .catch((error) => console.log(error))
