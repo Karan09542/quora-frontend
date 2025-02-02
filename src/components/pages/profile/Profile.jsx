@@ -5,7 +5,6 @@ import Navbar from "../../header/Navbar";
 import { ToastContainer } from "react-toastify";
 import {
   useBaseURLStore,
-  useIsLoginStore,
   useIsToAnswerStore,
   useOpenModelStore,
   useProfileUserStore,
@@ -23,7 +22,7 @@ import PageNotFound from "../../general-page/PageNotFound";
 import Loading from "../../comp_util/Loading";
 function Profile() {
   const baseURL = useBaseURLStore((state) => state.baseURL);
-  const userId = useUserStore((state) => state.user?._id);
+  const user = useUserStore((state) => state.user);
   const profileUser = useProfileUserStore((state) => state.profileUser);
   const setProfileUser = useProfileUserStore((state) => state.setProfileUser);
   const params = useParams();
@@ -37,16 +36,12 @@ function Profile() {
 
   const [loading, setLoading] = React.useState(false);
 
-  const isLogin = useIsLoginStore((state) => state.isLogin);
-
   // fetch profile user
   useEffect(() => {
-    console.log("userId", userId);
-    console.log("isLogin", isLogin);
-    setProfileUser(null);
+    console.log("user", user);
     setLoading(true);
     const username = params?.username;
-    fetch(`${baseURL}/user/profile/${username}/${userId}`, {
+    fetch(`${baseURL}/user/profile/${username}/${user?._id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +56,7 @@ function Profile() {
       })
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
-  }, [userId]);
+  }, [user]);
 
   const openModel = useOpenModelStore((state) => state.openModel);
   const isToAnswer = useIsToAnswerStore((state) => state.isToAnswer);
