@@ -38,6 +38,8 @@ function Profile() {
 
   // fetch profile user
   useEffect(() => {
+    console.log("userId", userId);
+    setProfileUser(null);
     setLoading(true);
     const username = params?.username;
     fetch(`${baseURL}/user/profile/${username}/${userId}`, {
