@@ -165,35 +165,42 @@ function renderFirstMedia(contentState) {
   blocks.forEach((block) => {
     if (block.getType() === "atomic") {
       const entityKey = block?.getEntityAt?.(0); // Assuming one entity per block
-      const entity = contentState?.getEntity(entityKey);
-      const entityData = entity?.getData();
-      // Create the HTML tag based on the entity type
-      if (entity.type?.toLowerCase() === "image") {
-        media = `<img src="${entityData?.src}" alt="${
-          entityData?.alt || "image"
-        } 
-        style={{ width: "100%", height: "100%" }}"/>`;
-      } else if (entity?.type?.toLowerCase() === "audio") {
-        media = `
-        <audio controls>
-            <source src="${entityData.src}" style='position: "absolute"; top: 0; left: 0; width: "100%"; height: "100%";
-              ' />
-          </audio>`;
-      } else if (entity?.type?.toLowerCase() === "video") {
-        media = `<video controls title="Embedded Video"
-            style= 'position: "absolute"; top: 0; left: 0; width: "100%"; height: "100%";'>
-            <source src="${entityData.src}" />
-          </video>`;
-      } else if (entity?.type?.toLowerCase() === "iframe") {
-        media = `<iframe 
-            src="${entityData?.src}"  
-            title="Embedded Video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen="true"
-            style='
-              position: "absolute"; top: 0; left: 0; width: "100%"; height: "100%";'
-            />`;
+
+      if (entityKey) {
+        try {
+          const entity = contentState?.getEntity(entityKey);
+          const entityData = entity?.getData();
+          // Create the HTML tag based on the entity type
+          if (entity.type?.toLowerCase() === "image") {
+            media = `<img src="${entityData?.src}" alt="${
+              entityData?.alt || "image"
+            } 
+            style={{ width: "100%", height: "100%" }}"/>`;
+          } else if (entity?.type?.toLowerCase() === "audio") {
+            media = `
+            <audio controls>
+                <source src="${entityData.src}" style='position: "absolute"; top: 0; left: 0; width: "100%"; height: "100%";
+                  ' />
+              </audio>`;
+          } else if (entity?.type?.toLowerCase() === "video") {
+            media = `<video controls title="Embedded Video"
+                style= 'position: "absolute"; top: 0; left: 0; width: "100%"; height: "100%";'>
+                <source src="${entityData.src}" />
+              </video>`;
+          } else if (entity?.type?.toLowerCase() === "iframe") {
+            media = `<iframe 
+                src="${entityData?.src}"  
+                title="Embedded Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen="true"
+                style='
+                  position: "absolute"; top: 0; left: 0; width: "100%"; height: "100%";'
+                />`;
+          }
+        } catch (error) {
+          console.log("Error rendering media:", error);
+        }
       }
     }
   });
