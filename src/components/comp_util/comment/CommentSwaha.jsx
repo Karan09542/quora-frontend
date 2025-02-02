@@ -19,6 +19,7 @@ function CommentSwaha({
   level,
   baseURL,
 }) {
+  console.log("comment_Swaha", baseURL);
   const [commentsData, setCommentsData] = useState(comments || []);
   const [isSubSubComment, setIsSubSubComment] = React.useState(true);
   const userId = useUserStore((state) => state.user?._id);

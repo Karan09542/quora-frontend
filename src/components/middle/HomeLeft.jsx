@@ -31,7 +31,7 @@ function HomeLeft() {
                 target="_blank"
               >
                 <div
-                  onClick={() => setSelectSpace(`space-name-${index}`)}
+                  // onClick={() => setSelectSpace(`space-name-${index}`)}
                   className="flex items-center gap-2 p-2 mx-auto mb-2 rounded cursor-pointer hover:bg-gray-200/50"
                 >
                   <img

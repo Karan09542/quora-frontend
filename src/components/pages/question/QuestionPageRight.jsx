@@ -25,8 +25,6 @@ function QuestionPageRight({
   itsOwnQuestion,
   data,
 }) {
-  console.log("data", data);
-
   // state
   const [isFollowingState, setIsFollowingState] = React.useState(isFollowing);
   const [isDownvotedState, setIsDownvotedState] = React.useState(isDownvoted);
