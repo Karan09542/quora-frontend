@@ -28,7 +28,7 @@ function CommentBox({
       console.log("commentBox", useBaseURLStore?.getState()?.baseURL);
       baseURL.current = useBaseURLStore?.getState()?.baseURL;
     }
-  }, []);
+  }, [page, isToComment]);
 
   const loadedPage = React.useRef(new Set());
   useEffect(() => {
