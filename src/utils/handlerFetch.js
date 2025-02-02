@@ -136,11 +136,14 @@ export const getSubComments = async ({
   if (!commentId) return;
   try {
     // fetching sub sub comments
-    const res = await fetch(`${baseURL}/comment/${commentId}`, {
-      headers: {
-        "X-UserId": userId,
-      },
-    });
+    const res = await fetch(
+      `${baseURL || import.meta.env.VITE_BASE_URL}/comment/${commentId}`,
+      {
+        headers: {
+          "X-UserId": userId,
+        },
+      }
+    );
 
     const data = await res.json();
     if (data.status === "success") {

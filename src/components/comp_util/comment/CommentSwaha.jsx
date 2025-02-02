@@ -71,9 +71,9 @@ function CommentSwaha({
                     baseURL,
                     userId,
                   });
-                  // if (isOk) {
-                  setIsSubSubComment(!isSubSubComment);
-                  // }
+                  if (isOk) {
+                    setIsSubSubComment(!isSubSubComment);
+                  }
                 }}
               />
             );
