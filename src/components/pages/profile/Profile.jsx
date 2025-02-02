@@ -35,9 +35,7 @@ function Profile() {
 
   // fetch profile user
   useEffect(() => {
-    // const username = /-\d+/.test(params?.username)
-    //   ? params?.username
-    //   : params?.username?.split("-")?.join(" ");
+    if (userId === null) return;
     const username = params?.username;
     fetch(`${baseURL}/user/profile/${username}/${userId}`, {
       method: "POST",
