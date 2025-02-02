@@ -29,7 +29,7 @@ function AnswerMid() {
   const [page, setPage] = React.useState(1);
   const loadedPages = React.useRef(new Set());
   useEffect(() => {
-    if (loadedPages.current.has(page)) {
+    if (loadedPages.current?.has(page)) {
       return;
     }
     setLoading(true);
@@ -44,12 +44,15 @@ function AnswerMid() {
       .then((res) => res.json())
       .then((data) => {
         if (data?.status === "success") {
+          loadedPages.current?.add(page);
           setQuoraQuestions([...quoraQuestions, ...data?.questions]);
-          loadedPages.current.add(page);
         }
       })
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
+    return () => {
+      loadedPages.current?.add(page);
+    };
   }, [accessToken, page]);
 
   const selectedMenu = useSelectedMenuStore((state) => state.selectedMenu);

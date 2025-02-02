@@ -27,11 +27,7 @@ function CommentBox({
       return;
     }
     setLoading(true);
-    fetch(
-      `${
-        import.meta.env?.VITE_BASE_URL
-      }/comment/${postId}/${userId}?page=${page}&limit=5`
-    )
+    fetch(`${baseURL}/comment/${postId}/${userId}?page=${page}&limit=5`)
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
