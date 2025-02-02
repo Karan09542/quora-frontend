@@ -1,9 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelectedMenuStore } from "../../../../Store/model";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function AnswerLeft() {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const sideMenu = [
     {
       name: "Questions for you",
@@ -21,11 +22,6 @@ function AnswerLeft() {
     },
   ];
 
-  // const [selectedMenu, setSelectedMenu] = React.useState("Questions for you");
-  const selectedMenu = useSelectedMenuStore((state) => state.selectedMenu);
-  const setSelectedMenu = useSelectedMenuStore(
-    (state) => state.setSelectedMenu
-  );
   return (
     <div className="relative">
       <div
@@ -37,12 +33,11 @@ function AnswerLeft() {
           {sideMenu.map((item, index) => (
             <p
               onClick={() => {
-                setSelectedMenu(item.name);
                 navigate(item.navigate);
               }}
               key={item.name}
               className={`text-[0.815rem] flex items-center justify-between px-3 mb-1 rounded cursor-pointer py-1 ${
-                selectedMenu === item.name
+                location?.pathname === item?.navigate
                   ? "text-[var(--text-color)] bg-[var(--bg-color)]"
                   : "text-gray-500 hover:bg-gray-100"
               }`}

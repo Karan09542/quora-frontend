@@ -66,11 +66,6 @@ export const useShouldRefetchQuestionStore = create((set) => ({
     set((state) => ({ shouldRefetchQuestion: !state.shouldRefetchQuestion })),
 }));
 
-export const useSelectedMenuStore = create((set) => ({
-  selectedMenu: "Questions for you",
-  setSelectedMenu: (selectedMenu) => set({ selectedMenu }),
-}));
-
 export const useReportStore = create((set) => ({
   report: {},
   setReport: (report) => set({ report }),

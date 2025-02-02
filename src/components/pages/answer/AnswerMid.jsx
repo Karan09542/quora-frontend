@@ -5,10 +5,9 @@ import {
   useAccessTokenStore,
   useBaseURLStore,
   useQuoraQuestionsStore,
-  useSelectedMenuStore,
 } from "../../../../Store/model";
 import DiscoverNewTopic from "./DiscoverNewTopic";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 import AnswerQuestionTempelate from "./util/AnswerQuestionTempelate";
 
@@ -52,8 +51,8 @@ function AnswerMid() {
       .finally(() => setLoading(false));
   }, [accessToken, page]);
 
-  const selectedMenu = useSelectedMenuStore((state) => state.selectedMenu);
-  if (selectedMenu === "Answer requests") {
+  const location = useLocation();
+  if (location?.pathname === "/answers/requests") {
     return (
       <div>
         <Outlet />
