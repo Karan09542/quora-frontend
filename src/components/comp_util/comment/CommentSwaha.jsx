@@ -60,6 +60,7 @@ function CommentSwaha({
                 key={comment?._id}
                 username={comment?.createdBy?.username}
                 content={comment?.content}
+                baseURL={baseURL}
                 onClick={async () => {
                   const isOk = await getSubComments({
                     commentId: comment?._id,

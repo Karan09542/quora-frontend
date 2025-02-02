@@ -2,7 +2,9 @@ import React from "react";
 import { handleDraftToText, textUpperCase } from "../../../utils/fn_utils";
 import useTraversal from "../../../hooks/useTraversal";
 
-function SubSubCommentSwaha({ username, content, onClick }) {
+function SubSubCommentSwaha({ username, content, onClick, baseURL }) {
+  console.log("subSubCommentSwaha", baseURL);
+
   return (
     <>
       <div
