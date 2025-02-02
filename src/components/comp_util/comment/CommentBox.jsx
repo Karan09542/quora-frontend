@@ -23,7 +23,6 @@ function CommentBox({
   const [loading, setLoading] = useState(false);
 
   console.log("commentBox", baseURL);
-  const setBaseURL = useBaseURLStore((state) => state.setBaseURL);
 
   const loadedPage = React.useRef(new Set());
   useEffect(() => {
