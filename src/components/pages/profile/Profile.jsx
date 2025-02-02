@@ -19,6 +19,7 @@ import CredentialPopup from "./popup/CredentialPopup";
 import PostAnswer from "../../quoraComponents/PostAnswer";
 import DisplayModePopup from "../../general-page/DisplayModePopup";
 import PageNotFound from "../../general-page/PageNotFound";
+import Loading from "../../comp_util/Loading";
 function Profile() {
   const baseURL = useBaseURLStore((state) => state.baseURL);
   const userId = useUserStore((state) => state.user?._id);
@@ -33,9 +34,11 @@ function Profile() {
     document.title = `${username} - Quora`;
   }, [params.username]);
 
+  const [loading, setLoading] = React.useState(false);
+
   // fetch profile user
   useEffect(() => {
-    setProfileUser(null);
+    setLoading(true);
     const username = params?.username;
     fetch(`${baseURL}/user/profile/${username}/${userId}`, {
       method: "POST",
@@ -50,11 +53,15 @@ function Profile() {
           console.log("profile user", data);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
   }, [userId]);
 
   const openModel = useOpenModelStore((state) => state.openModel);
   const isToAnswer = useIsToAnswerStore((state) => state.isToAnswer);
+  if (loading) {
+    <Loading />;
+  }
   return (
     <>
       <ToastContainer
