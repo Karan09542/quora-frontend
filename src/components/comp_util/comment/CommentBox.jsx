@@ -21,13 +21,14 @@ function CommentBox({
   const [comments, setComments] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const baseURL = useRef(null);
-  useEffect(() => {
-    if (!baseURL.current) {
-      console.log("commentBox", useBaseURLStore?.getState()?.baseURL);
-      baseURL.current = useBaseURLStore?.getState()?.baseURL;
-    }
-  }, []);
+  // const baseURL = useRef(null);
+  const baseURL = useBaseURLStore?.getState()?.baseURL;
+  // useEffect(() => {
+  //   if (!baseURL.current) {
+  //     console.log("commentBox", useBaseURLStore?.getState()?.baseURL);
+  //     baseURL.current = useBaseURLStore?.getState()?.baseURL;
+  //   }
+  // }, []);
 
   const loadedPage = React.useRef(new Set());
   useEffect(() => {
