@@ -22,7 +22,7 @@ function CommentBox({
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  const baseURL = useBaseURLStore((state) => state.baseURL);
+  const baseURL = import.meta.env?.VITE_BASE_URL ?? "";
 
   const loadedPage = React.useRef(new Set());
   useEffect(() => {
