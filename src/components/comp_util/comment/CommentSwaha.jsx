@@ -38,9 +38,6 @@ function CommentSwaha({
       </div>
     );
   };
-  if (!baseURL) {
-    return <></>;
-  }
   return (
     <div>
       {/* Heading */}
@@ -71,12 +68,12 @@ function CommentSwaha({
                     commentId: comment?._id,
                     setComments: isRootComment ? setComments : setCommentsData,
                     comments: isRootComment ? comments : commentsData,
-                    baseURL: baseURL,
+                    baseURL,
                     userId,
                   });
-                  if (isOk) {
-                    setIsSubSubComment(!isSubSubComment);
-                  }
+                  // if (isOk) {
+                  setIsSubSubComment(!isSubSubComment);
+                  // }
                 }}
               />
             );
