@@ -65,7 +65,7 @@ function CommentSwaha({
                     commentId: comment?._id,
                     setComments: isRootComment ? setComments : setCommentsData,
                     comments: isRootComment ? comments : commentsData,
-                    baseURL,
+                    baseURL: baseURL,
                     userId,
                   });
                   if (isOk) {

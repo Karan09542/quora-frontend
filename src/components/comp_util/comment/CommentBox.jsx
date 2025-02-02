@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import Loading from "../Loading";
 import DownArrowButton from "../../buttons-fields/DownArrowButton";
@@ -21,8 +21,13 @@ function CommentBox({
   const [comments, setComments] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-
-  const baseURL = import.meta.env?.VITE_BASE_URL ?? "";
+  const baseURL = useRef(null);
+  useEffect(() => {
+    if (!baseURL.current) {
+      console.log("commentBox", useBaseURLStore?.getState()?.baseURL);
+      baseURL.current = useBaseURLStore?.getState()?.baseURL;
+    }
+  }, []);
 
   const loadedPage = React.useRef(new Set());
   useEffect(() => {
