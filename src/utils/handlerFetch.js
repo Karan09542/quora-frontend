@@ -129,7 +129,7 @@ export const getSubComments = async ({
   commentId,
   setComments,
   comments,
-  baseURL = "",
+  baseURL,
   userId,
 }) => {
   console.log("getSubComments", baseURL);

@@ -44,7 +44,7 @@ function CommentBox({
       .finally(() => {
         setLoading(false);
       });
-  }, [isToComment, page, baseURL]);
+  }, [isToComment, page]);
   return (
     <>
       {isToComment && (
