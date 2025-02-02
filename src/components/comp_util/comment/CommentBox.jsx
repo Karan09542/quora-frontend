@@ -22,13 +22,13 @@ function CommentBox({
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   // const baseURL = useRef(null);
-  const baseURL = useBaseURLStore?.getState()?.baseURL;
-  // useEffect(() => {
-  //   if (!baseURL.current) {
-  //     console.log("commentBox", useBaseURLStore?.getState()?.baseURL);
-  //     baseURL.current = useBaseURLStore?.getState()?.baseURL;
-  //   }
-  // }, []);
+  const baseURL = useRef(null);
+  useEffect(() => {
+    if (!baseURL.current) {
+      console.log("commentBox", useBaseURLStore?.getState()?.baseURL);
+      baseURL.current = useBaseURLStore?.getState()?.baseURL;
+    }
+  }, []);
 
   const loadedPage = React.useRef(new Set());
   useEffect(() => {
@@ -80,7 +80,7 @@ function CommentBox({
               isHeading={isHeading}
               // for subSubComment
               level={1}
-              baseURL={baseURL}
+              baseURL={baseURL?.current}
             />
           </Suspense>
           {/* button to show more comments */}
