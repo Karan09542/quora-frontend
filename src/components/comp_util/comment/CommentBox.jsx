@@ -9,7 +9,7 @@ function CommentBox({
   isToComment,
   postId,
   userId,
-  baseURL,
+  // baseURL,
   className,
   isHeading,
   isInputRounded,
@@ -21,6 +21,12 @@ function CommentBox({
   const [comments, setComments] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+
+  const baseURL = useBaseURLStore((state) => state.baseURL);
+  const setBaseURL = useBaseURLStore((state) => state.setBaseURL);
+  useEffect(() => {
+    setBaseURL(baseURL);
+  }, [baseURL]);
 
   console.log("commentBox", baseURL);
 
