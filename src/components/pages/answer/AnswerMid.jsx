@@ -27,13 +27,14 @@ function AnswerMid() {
   );
   const [page, setPage] = React.useState(1);
   const loadedPages = React.useRef(new Set());
+
   useEffect(() => {
     if (loadedPages.current?.has(page)) {
       return;
     }
-    setLoading(true);
     if (!accessToken) return;
-    fetch(`${baseURL}/question/quora-questions?limit=4&page${page}`, {
+    setLoading(true);
+    fetch(`${baseURL}/question/quora-questions?limit=4&page=${page}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
