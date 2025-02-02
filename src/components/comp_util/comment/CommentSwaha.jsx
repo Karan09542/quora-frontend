@@ -51,7 +51,8 @@ function CommentSwaha({
       )}
       {/* Comment */}
 
-      {comments &&
+      {baseURL &&
+        comments &&
         comments?.map((comment, index) => {
           // for subSubComment
           if (level > 2 && index === 0 && isSubSubComment) {
