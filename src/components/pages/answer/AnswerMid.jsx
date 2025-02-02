@@ -50,9 +50,6 @@ function AnswerMid() {
       })
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
-    return () => {
-      loadedPages.current?.add(page);
-    };
   }, [accessToken, page]);
 
   const selectedMenu = useSelectedMenuStore((state) => state.selectedMenu);

@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../comp_util/Loading";
 import {
+  useBaseURLStore,
   useHasQuestionStore,
   useIsLoginStore,
   useIsToAnswerStore,
@@ -35,11 +36,12 @@ function QuestionPage() {
   const setHasQuestion = useHasQuestionStore((state) => state.setHasQuestion);
   const [data, setData] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  const baseURL = useBaseURLStore((state) => state.baseURL);
 
   useEffect(() => {
     if (user === null) return;
     setLoading(true);
-    fetch(`/question/${params?.question}`, {
+    fetch(`${baseURL}/question/${params?.question}`, {
       headers: {
         "Content-Type": "application/json",
         "X-UserId": user?._id,

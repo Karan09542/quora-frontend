@@ -32,7 +32,6 @@ function QuestionPageRight({
   const [isDownvotedState, setIsDownvotedState] = React.useState(isDownvoted);
 
   const [more, setMore] = React.useState(false);
-  const [hide, setHide] = React.useState(false);
   const setIsToAnswer = useIsToAnswerStore((state) => state.setIsToAnswer);
   const setQuestionId = useIsToAnswerStore((state) => state.setQuestionId);
   const setQuestion = useIsToAnswerStore((state) => state.setQuestion);
@@ -46,7 +45,7 @@ function QuestionPageRight({
         <DownArrowButton
           LeftIcon={Pen}
           isRight={false}
-          name={`Answer ${totalAnswers}`}
+          name={`Answer ${totalAnswers || ""}`}
           hoverColor={"hover:bg-[#ebf0ff]"}
           className={`border-[#2e69ff] [&>svg_*]:stroke-[rgb(46,105,255)] text-[#2e69ff] max-w-[170px] w-full grow justify-center ${
             isAlreadyAnswered ? "opacity-55" : "active:opacity-80"
