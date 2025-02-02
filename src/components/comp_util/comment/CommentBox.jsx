@@ -9,7 +9,7 @@ function CommentBox({
   isToComment,
   postId,
   userId,
-  // baseURL,
+  baseURL,
   className,
   isHeading,
   isInputRounded,
@@ -21,14 +21,8 @@ function CommentBox({
   const [comments, setComments] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  // const baseURL = useRef(null);
-  const baseURL = useRef(null);
-  useEffect(() => {
-    if (!baseURL.current) {
-      console.log("commentBox", useBaseURLStore?.getState()?.baseURL);
-      baseURL.current = useBaseURLStore?.getState()?.baseURL;
-    }
-  }, [page, isToComment]);
+
+  console.log("commentBox", baseURL);
 
   const loadedPage = React.useRef(new Set());
   useEffect(() => {
@@ -50,7 +44,7 @@ function CommentBox({
       .finally(() => {
         setLoading(false);
       });
-  }, [isToComment, page]);
+  }, [isToComment, page, baseURL]);
   return (
     <>
       {isToComment && (
@@ -80,7 +74,7 @@ function CommentBox({
               isHeading={isHeading}
               // for subSubComment
               level={1}
-              baseURL={baseURL?.current}
+              baseURL={baseURL}
             />
           </Suspense>
           {/* button to show more comments */}
