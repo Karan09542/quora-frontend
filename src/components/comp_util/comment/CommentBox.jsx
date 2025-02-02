@@ -9,7 +9,7 @@ function CommentBox({
   isToComment,
   postId,
   userId,
-  // baseURL,
+  baseURL,
   className,
   isHeading,
   isInputRounded,
@@ -22,13 +22,8 @@ function CommentBox({
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  const baseURL = useBaseURLStore((state) => state.baseURL);
-  const setBaseURL = useBaseURLStore((state) => state.setBaseURL);
-  useEffect(() => {
-    setBaseURL(baseURL);
-  }, [baseURL]);
-
   console.log("commentBox", baseURL);
+  const setBaseURL = useBaseURLStore((state) => state.setBaseURL);
 
   const loadedPage = React.useRef(new Set());
   useEffect(() => {
@@ -42,6 +37,7 @@ function CommentBox({
         if (data.status === "success") {
           setComments((prev) => [...prev, ...data.comments]);
           loadedPage.current.add(page);
+          setBaseURL(baseURL);
         } else {
           toast.error(data.message);
         }
