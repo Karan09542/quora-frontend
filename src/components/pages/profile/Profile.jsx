@@ -5,6 +5,7 @@ import Navbar from "../../header/Navbar";
 import { ToastContainer } from "react-toastify";
 import {
   useBaseURLStore,
+  useIsLoginStore,
   useIsToAnswerStore,
   useOpenModelStore,
   useProfileUserStore,
@@ -36,9 +37,12 @@ function Profile() {
 
   const [loading, setLoading] = React.useState(false);
 
+  const isLogin = useIsLoginStore((state) => state.isLogin);
+
   // fetch profile user
   useEffect(() => {
     console.log("userId", userId);
+    console.log("isLogin", isLogin);
     setProfileUser(null);
     setLoading(true);
     const username = params?.username;
