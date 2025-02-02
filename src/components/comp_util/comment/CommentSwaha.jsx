@@ -19,6 +19,9 @@ function CommentSwaha({
   level,
   baseURL,
 }) {
+  if (baseURL !== undefined) {
+    window.baseURL = baseURL;
+  }
   console.log("comment_Swaha", baseURL);
   const [commentsData, setCommentsData] = useState(comments || []);
   const [isSubSubComment, setIsSubSubComment] = React.useState(true);
@@ -65,7 +68,7 @@ function CommentSwaha({
                     commentId: comment?._id,
                     setComments: isRootComment ? setComments : setCommentsData,
                     comments: isRootComment ? comments : commentsData,
-                    baseURL: baseURL,
+                    baseURL: window.baseURL,
                     userId,
                   });
                   if (isOk) {

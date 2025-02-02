@@ -37,7 +37,6 @@ function CommentBox({
         if (data.status === "success") {
           setComments((prev) => [...prev, ...data.comments]);
           loadedPage.current.add(page);
-          setBaseURL(baseURL);
         } else {
           toast.error(data.message);
         }
@@ -46,7 +45,7 @@ function CommentBox({
       .finally(() => {
         setLoading(false);
       });
-  }, [isToComment, page, baseURL]);
+  }, [isToComment, page]);
   return (
     <>
       {isToComment && (
