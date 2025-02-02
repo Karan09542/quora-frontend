@@ -168,7 +168,7 @@ function renderFirstMedia(contentState) {
 
       if (entityKey) {
         try {
-          const entity = contentState?.getEntity(entityKey);
+          const entity = contentState?.getEntity?.(entityKey);
           const entityData = entity?.getData();
           // Create the HTML tag based on the entity type
           if (entity.type?.toLowerCase() === "image") {
