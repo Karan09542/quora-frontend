@@ -22,8 +22,6 @@ function CommentBox({
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  console.log("commentBox", baseURL);
-
   const loadedPage = React.useRef(new Set());
   useEffect(() => {
     if (loadedPage.current.has(page) || !isToComment) {

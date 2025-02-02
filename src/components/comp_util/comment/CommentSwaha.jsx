@@ -19,13 +19,12 @@ function CommentSwaha({
   level,
   baseURL,
 }) {
-  // if (baseURL !== undefined) {
-  //   window.baseURL = baseURL;
-  // }
-  console.log("comment_Swaha", baseURL);
   const [commentsData, setCommentsData] = useState(comments || []);
   const [isSubSubComment, setIsSubSubComment] = React.useState(true);
   const userId = useUserStore((state) => state.user?._id);
+
+  // loading for subSubComment
+  const [loading, setLoading] = useState(false);
   const RecomendedComponent = () => {
     return (
       <div className="flex items-center text-[13px] font-medium text-[var(--text-gen-color)] gap-1 click-hover-effect px-2.5 py-1 rounded-full">
@@ -63,6 +62,7 @@ function CommentSwaha({
                 key={comment?._id}
                 username={comment?.createdBy?.username}
                 content={comment?.content}
+                loading={loading}
                 onClick={async () => {
                   const isOk = await getSubComments({
                     commentId: comment?._id,
@@ -70,6 +70,7 @@ function CommentSwaha({
                     comments: isRootComment ? comments : commentsData,
                     baseURL,
                     userId,
+                    setLoading,
                   });
                   if (isOk) {
                     setIsSubSubComment(!isSubSubComment);
@@ -78,6 +79,8 @@ function CommentSwaha({
               />
             );
           }
+
+          // loading
           if (level > 2 && index > 0 && isSubSubComment) {
             return null;
           }

@@ -131,9 +131,10 @@ export const getSubComments = async ({
   comments,
   baseURL,
   userId,
+  setLoading,
 }) => {
-  console.log("getSubSubComments", baseURL);
   if (!commentId) return;
+  setLoading(true);
   try {
     // fetching sub sub comments
     const res = await fetch(
@@ -168,5 +169,7 @@ export const getSubComments = async ({
   } catch (error) {
     console.log(`error occurred on getSubSubComments: ${error}`);
     return false;
+  } finally {
+    setLoading(false);
   }
 };
