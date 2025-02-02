@@ -160,13 +160,11 @@ export const handleDraftToHtml = (postJson) => {
 function renderFirstMedia(contentState) {
   const blocks = contentState?.getBlocksAsArray();
   let media = null;
-  console.log("blocks", blocks);
-
   // Iterate through blocks to find the first atomic block
 
   blocks.forEach((block) => {
     if (block.getType() === "atomic") {
-      const entityKey = block?.getEntityAt(0); // Assuming one entity per block
+      const entityKey = block?.getEntityAt?.(0); // Assuming one entity per block
       const entity = contentState?.getEntity(entityKey);
       const entityData = entity?.getData();
       // Create the HTML tag based on the entity type
