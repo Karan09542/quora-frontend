@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import { handleDraftToHtml } from "../../utils/fn_utils";
 import useHighlight from "../../hooks/useHighlight";
 
