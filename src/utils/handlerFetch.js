@@ -132,7 +132,7 @@ export const getSubComments = async ({
   baseURL,
   userId,
 }) => {
-  console.log("getSubComments", baseURL);
+  console.log("getSubSubComments", baseURL);
   if (!commentId) return;
   try {
     // fetching sub sub comments
