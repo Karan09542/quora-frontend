@@ -87,23 +87,27 @@ function QuestionPage() {
         </Suspense>
       )}
       <div
-        className={`grid grid-cols-[656px_354px] max-w-[1200px] mx-auto  [&>div]:w-full gap-x-4 ${
-          width <= 552 ? "mt-16" : "mt-5"
-        } px-7`}
+        // grid-cols-[656px_minmax(100px,354px)] max-w-[1200px]
+        className={` grid question-grid mx-auto [&>div]:w-full gap-x-4 ${
+          width <= 552 ? "mt-16 px-3" : "mt-5 px-7"
+        } `}
       >
         <QuestionPageLeft {...data} isLogin={isLogin} />
-        <QuestionPageRight
-          totalAnswers={data?.totalAnswers}
-          questionId={data?._id}
-          question={data?.question}
-          isAlreadyAnswered={data?.isAlreadyAnswered}
-          createdBy={data?.createdBy}
-          isFollowing={data?.isFollowing}
-          isDownvoted={data?.isDownvoted}
-          itsOwnQuestion={data?.itsOwnQuestion}
-          data={data}
-          setData={setData}
-        />
+        {width > 1000 && (
+          <QuestionPageRight
+            totalAnswers={data?.totalAnswers}
+            questionId={data?._id}
+            question={data?.question}
+            isAlreadyAnswered={data?.isAlreadyAnswered}
+            createdBy={data?.createdBy}
+            isFollowing={data?.isFollowing}
+            isDownvoted={data?.isDownvoted}
+            itsOwnQuestion={data?.itsOwnQuestion}
+            data={data}
+            setData={setData}
+            responsiveShow={true}
+          />
+        )}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import {
   useAccessTokenStore,
   useBaseURLStore,
   useIsLoginStore,
+  useOpenModelStore,
   useSearchValueStore,
 } from "../../../../Store/model";
 import QuestionTemplate from "./util/QuestionTemplate";
@@ -15,7 +16,8 @@ import TopicTempelate from "./util/TopicTempelate";
 import NotFoundAddQuestion from "./util/NotFoundAddQuestion";
 import SpaceTempelate from "./util/SpaceTempelate";
 import Loading from "../../comp_util/Loading";
-function SearchMid() {
+import SearchLeft from "./SearchLeft";
+function SearchMid({ responsive_width, threshold_width }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const baseURL = useBaseURLStore((state) => state.baseURL);
   const accessToken = useAccessTokenStore((state) => state.accessToken);
@@ -67,6 +69,7 @@ function SearchMid() {
   );
 
   const isLogin = useIsLoginStore((state) => state.isLogin);
+  const setOpenModel = useOpenModelStore((state) => state.setOpenModel);
   return (
     <div>
       <div className="[&>div]:border rounded-lg shadow-sm bg-white [&>div]:rounded-lg [&>div]:mb-2 mt-2 mb-10">
@@ -82,19 +85,29 @@ function SearchMid() {
             className={"px-4 py-2"}
             component={
               hasSearchParamsFilters && (
-                <span
-                  onClick={() =>
-                    setSearchParams((params) => {
-                      ["type", "author", "time"].forEach((item) =>
-                        params.delete(item)
-                      );
-                      return params;
-                    })
-                  }
-                  className="text-[15px] text-[var(--text-color-93)] hover:underline cursor-pointer"
-                >
-                  Clear Filters
-                </span>
+                <p className="dot-after">
+                  {responsive_width <= threshold_width && (
+                    <span
+                      onClick={() => setOpenModel("filter")}
+                      className="text-[15px] text-[var(--text-color-93)] hover:underline cursor-pointer"
+                    >
+                      Views filters
+                    </span>
+                  )}
+                  <span
+                    onClick={() =>
+                      setSearchParams((params) => {
+                        ["type", "author", "time"].forEach((item) =>
+                          params.delete(item)
+                        );
+                        return params;
+                      })
+                    }
+                    className="text-[15px] text-[var(--text-color-93)] hover:underline cursor-pointer"
+                  >
+                    &nbsp;Clear Filters
+                  </span>
+                </p>
               )
             }
           />

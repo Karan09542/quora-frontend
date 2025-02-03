@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Menu = ({ pathMenu, currentPath, color }) => {
+const Menu = ({ pathMenu, currentPath, color, className }) => {
   const navigate = useNavigate();
   return (
-    <div className="sticky w-full z-[1] pt-0.5 bg-white top-12">
+    <div className={`${className} sticky w-full z-[1] pt-0.5 bg-white top-12`}>
       <div className={`flex gap-x-0.5 text-[13px] mt-2`}>
         {pathMenu?.map((menu) => {
           return (

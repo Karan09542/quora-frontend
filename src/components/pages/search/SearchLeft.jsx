@@ -1,9 +1,32 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import QuoraSearch from "../../../assets/search.svg?react";
+import CrossButton from "../../buttons-fields/CrossButton";
+import Button from "../../buttons-fields/Button";
+import { useOpenModelStore } from "../../../../Store/model";
 
-function SearchLeft() {
+function SearchLeft({
+  isFixed = false,
+  className,
+  responsive_width,
+  threshold_width,
+}) {
   const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    if (isFixed) {
+      document.documentElement.style.overflowY = "hidden";
+    }
+    return () => {
+      document.documentElement.style.overflowY = "auto";
+    };
+  }, [isFixed]);
+
+  useEffect(() => {
+    if (responsive_width > threshold_width) {
+      setOpenModel(null);
+    }
+  }, [responsive_width]);
 
   const searchRef = useRef(null);
   const handleSetSearchParams = (name, type) => {
@@ -18,6 +41,11 @@ function SearchLeft() {
       return params;
     });
   };
+
+  // for Responsive
+  const currentFilter = useRef(new Set());
+  // end Responsive
+
   const byTypeMenu = [
     {
       name: "All types",
@@ -26,32 +54,50 @@ function SearchLeft() {
     },
     {
       name: "Questions",
-      onClick: () => handleSetSearchParams("type", "question"),
+      onClick: () => {
+        handleSetSearchParams("type", "question");
+        currentFilter.current.add("question");
+      },
       type: "question",
     },
     {
       name: "Answers",
-      onClick: () => handleSetSearchParams("type", "answer"),
+      onClick: () => {
+        handleSetSearchParams("type", "answer");
+        currentFilter.current.add("answer");
+      },
       type: "answer",
     },
     {
       name: "Posts",
-      onClick: () => handleSetSearchParams("type", "post"),
+      onClick: () => {
+        handleSetSearchParams("type", "post");
+        currentFilter.current.add("post");
+      },
       type: "post",
     },
     {
       name: "Profiles",
-      onClick: () => handleSetSearchParams("type", "profile"),
+      onClick: () => {
+        handleSetSearchParams("type", "profile");
+        currentFilter.current.add("profile");
+      },
       type: "profile",
     },
     {
       name: "Topics",
-      onClick: () => handleSetSearchParams("type", "topic"),
+      onClick: () => {
+        handleSetSearchParams("type", "topic");
+        currentFilter.current.add("topic");
+      },
       type: "topic",
     },
     {
       name: "Spaces",
-      onClick: () => handleSetSearchParams("type", "tribe"),
+      onClick: () => {
+        handleSetSearchParams("type", "tribe");
+        currentFilter.current.add("tribe");
+      },
       type: "tribe",
     },
   ];
@@ -63,7 +109,10 @@ function SearchLeft() {
     },
     {
       name: "People you follow",
-      onClick: () => handleSetSearchParams("author", "followed"),
+      onClick: () => {
+        handleSetSearchParams("author", "followed");
+        currentFilter.current.add("followed");
+      },
       author: "followed",
     },
   ];
@@ -75,35 +124,87 @@ function SearchLeft() {
     },
     {
       name: "Past hour",
-      onClick: () => handleSetSearchParams("time", "hour"),
+      onClick: () => {
+        handleSetSearchParams("time", "hour");
+        currentFilter.current.add("hour");
+      },
       time: "hour",
     },
     {
       name: "Past day",
-      onClick: () => handleSetSearchParams("time", "day"),
+      onClick: () => {
+        handleSetSearchParams("time", "day");
+        currentFilter.current.add("day");
+      },
       time: "day",
     },
     {
       name: "Past week",
-      onClick: () => handleSetSearchParams("time", "week"),
+      onClick: () => {
+        handleSetSearchParams("time", "week");
+        currentFilter.current.add("week");
+      },
       time: "week",
     },
     {
       name: "Past month",
-      onClick: () => handleSetSearchParams("time", "month"),
+      onClick: () => {
+        handleSetSearchParams("time", "month");
+        currentFilter.current.add("month");
+      },
       time: "month",
     },
     {
       name: "Past year",
-      onClick: () => handleSetSearchParams("time", "year"),
+      onClick: () => {
+        handleSetSearchParams("time", "year");
+        currentFilter.current.add("year");
+      },
       time: "year",
     },
   ];
+  const setOpenModel = useOpenModelStore((state) => state.setOpenModel);
   return (
-    <div className="relative">
+    <div
+      // left-0 [&>div]:mx-0 [&>div]:max-w-full [&>div]:px-10
+      className={`${
+        isFixed ? "fixed w-screen z-20 h-full bg-[#242424E6]/85 " : "relative"
+      } ${className}`}
+    >
       <div
-        className={` max-w-[160px] max-h-[80vh] overflow-y-auto mx-auto first:text-[#282829] w-full fixed scroll-hover-effect`}
+        className={`${
+          isFixed
+            ? "origin-center bottom-0 h-full flow-y bg-white animate-[fadeIn_0.3s_ease-in-out] absolute w-full  mx-auto -translate-x-1/2 left-1/2 item px-5 top-3"
+            : "max-w-[160px] max-h-[80vh] overflow-y-auto mx-auto first:text-[#282829] w-full sticky top-20 scroll-hover-effect"
+        } `}
       >
+        {/* isFixed */}
+        {isFixed && (
+          <div className="sticky top-0 flex items-center justify-between pt-2 pb-2 bg-white child-flex">
+            <div className="text-[15px] text-[var(--text-dark)]">
+              <CrossButton
+                onClick={() => {
+                  // currentFilter?.current?.forEach((value) => {
+                  //   // console.log("value", value);
+                  //   deleteSearchParams(value);
+                  // });
+
+                  setOpenModel(null);
+                }}
+                size={34}
+              />
+              <span>Search filters</span>
+            </div>
+            <Button
+              onClick={() => setOpenModel(null)}
+              className={"bg-blue-500"}
+              name={"Done"}
+              style={{ padding: "0.3rem 1rem" }}
+            />
+          </div>
+        )}
+        {isFixed && <hr />}
+        {/* end - isFixed */}
         {/* By type */}
         <p className="px-3 pb-1.5 font-semibold">By type</p>
         <hr />

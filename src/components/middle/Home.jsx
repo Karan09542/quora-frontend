@@ -26,14 +26,14 @@ function Home() {
       {openModel === "create space" && <CreateSpacePopup />}
       {openModel?.isInvite && <InvitePopup />}
       <div
-        className={`grid grid-cols-[138px_588px_1fr] max-w-[1200px] mx-auto  [&>div]:w-full gap-x-4 ${
-          width <= 552 ? "mt-16" : "mt-5"
-        } px-7`}
+        className={`grid max-[640px]:grid-cols-1 max-[1080px]:grid-cols-[2fr_1fr] grid-cols-[138px_588px_1fr] max-w-[1200px] mx-auto  [&>div]:w-full gap-x-4 ${
+          width <= 552 ? "mt-16 px-3" : "mt-5 px-7"
+        } `}
       >
         <HomeLeft />
 
         <HomeMid />
-        <HomeRight />
+        {width > 578 && <HomeRight />}
       </div>
     </>
   );

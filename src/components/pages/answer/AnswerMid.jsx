@@ -11,7 +11,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 import AnswerQuestionTempelate from "./util/AnswerQuestionTempelate";
 
-function AnswerMid() {
+function AnswerMid({ className }) {
   const feeds = ["Unfollow Internet Security", "Downvote question", "Report"];
 
   // Fetch Questions
@@ -61,8 +61,8 @@ function AnswerMid() {
     );
   }
   return (
-    <div>
-      <div className="border rounded-lg">
+    <div className={`${className}`}>
+      <div className="border rounded-lg ">
         {/* first */}
         <div className="flex items-center gap-2 px-4 py-2">
           <span className="bg-[var(--text-color)]  rounded aspect-square ">

@@ -50,8 +50,6 @@ import SignInButton from "../buttons-fields/SignInButton";
 // tippy popup
 import TippyPopup from "../comp_util/tippy/TippyPopup";
 import Pen from "../../assets/answer/pen.svg?react";
-import SearchInput from "./SearchInput";
-import UserProfilePicture from "./UserProfilePicture";
 const Navbar = () => {
   const user = useUserStore((state) => state.user);
   const [f, setF] = useState(0.75);
@@ -77,10 +75,11 @@ const Navbar = () => {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  const searchRef = useRef(null);
   const section = useSectionStore((state) => state.section);
   const setSection = useSectionStore((state) => state.setSection);
   const location = useLocation();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   // work on input and search
   const searchValue = useSearchValueStore((state) => state.searchValue);
@@ -191,7 +190,6 @@ const Navbar = () => {
       },
     },
   ];
-  const [isToSearch, setIsToSearch] = React.useState(false);
   const Hamburger = () => (
     <>
       <div className="bg-white text-[var(--text-dark)] min-w-[260px] max-w-[260px] w-max max-h-[70vh] h-full overflow-y-auto ">
@@ -202,7 +200,7 @@ const Navbar = () => {
           <div className="p-4 hover:opacity-60">
             <div className="w-10 h-10 mb-2 rounded-full aspect-square ">
               <img
-                className="object-cover w-full h-full rounded-full"
+                className="w-full h-full rounded-full"
                 src={user?.profilePicture || UserDefaultImage}
                 alt="user profile image"
               />
@@ -369,7 +367,6 @@ const Navbar = () => {
           render={({ content }) => content}
         />
         {/* DESKTOP */}
-        {/* width > 1085 && */}
         {width > 1085 && (
           <div
             // max-[1085px]:bg-[#B92B27]
@@ -395,7 +392,6 @@ const Navbar = () => {
                     : "[&>div]:after:top-[58px]"
                 }`}
               >
-                {/* home */}
                 <div
                   onClick={() => {
                     setSection("home");
@@ -420,7 +416,6 @@ const Navbar = () => {
                     }`}
                   />
                 </div>
-                {/* following */}
                 <div
                   className={
                     section === "following" ? sectionBarCss : sectionBarHoverCss
@@ -446,7 +441,6 @@ const Navbar = () => {
                     }`}
                   />
                 </div>
-                {/* answers */}
                 <div
                   className={
                     section === "answers" ? sectionBarCss : sectionBarHoverCss
@@ -471,7 +465,6 @@ const Navbar = () => {
                     }`}
                   />
                 </div>
-                {/* spaces */}
                 <div
                   className={
                     section === "spaces" ? sectionBarCss : sectionBarHoverCss
@@ -496,7 +489,6 @@ const Navbar = () => {
                     }`}
                   />
                 </div>
-                {/* notifications */}
                 <div
                   className={
                     section === "notifications"
@@ -525,14 +517,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Search Input */}
-                <SearchInput
-                  plusHide={plusHide}
-                  searchParams={searchParams}
-                  handleFocus={handleFocus}
-                  searchValue={searchValue}
-                  setSearchValue={setSearchValue}
-                />
-                {/* <div
+                <div
                   className={`flex items-center px-1 py-2 -mr-5 text-sm border -ml-7 gap-x-1 bg-white w-full max-[1234px]:-mx-3  max-[1085px]:px-3 rounded 
                   ${
                     plusHide
@@ -541,7 +526,7 @@ const Navbar = () => {
                   } hover:border-blue-500 hover:border transition-border`}
                 >
                   <QuoraSearch
-                    // onClick={() => searchRef.current.focus()}
+                    onClick={() => searchRef.current.focus()}
                     className="p-0.5 hover:cursor-pointer eleminate"
                   />{" "}
                   <input
@@ -575,7 +560,7 @@ const Navbar = () => {
                     placeholder="Search Quora"
                     className="w-full outline-none"
                   />
-                </div> */}
+                </div>
                 {/* Try Quora+ */}
                 {width >= 1085 && !plusHide && (
                   <button
@@ -596,7 +581,7 @@ const Navbar = () => {
                   />
                 )}
                 {/* Profile picture */}
-                {/* {user?.profilePicture && !plusHide ? (
+                {user?.profilePicture && !plusHide ? (
                   <Tippy
                     placement="bottom"
                     interactive={true}
@@ -628,15 +613,7 @@ const Navbar = () => {
                       </div>
                     </Tippy>
                   )
-                )} */}
-
-                <UserProfilePicture
-                  profilePicture={user?.profilePicture}
-                  content={<Hamburger />}
-                  plusHide={plusHide}
-                  username={user?.username}
-                />
-
+                )}
                 {/* Globe */}
                 {width > 1085 && !plusHide && (
                   <Tippy
@@ -699,407 +676,7 @@ const Navbar = () => {
             )}
           </div>
         )}
-        {/* TABLET */}
-        {width < 1085 && width > 552 && (
-          <>
-            <div className="flex items-center max-w-[1200px] mx-auto py-2  bg-[#B92B27] px-7 gap-10">
-              {/* Logo */}
-              <Link to="/">
-                <QuoraLogo
-                  onClick={handleScrollToTop}
-                  className="cursor-pointer [&>*]:fill-white"
-                  style={{ width: "5rem", minWidth: 80 }}
-                />
-              </Link>
-
-              <div className="flex items-center w-full [&>svg]:w-7 [&>svg]:hover:cursor-pointer gap-x-5">
-                {/* Search Input */}
-                <SearchInput
-                  plusHide={plusHide}
-                  searchParams={searchParams}
-                  handleFocus={handleFocus}
-                  searchValue={searchValue}
-                  setSearchValue={setSearchValue}
-                  isHover={false}
-                  className={"flex-row-reverse"}
-                />
-                {/* <div className="flex flex-row-reverse items-center justify-between w-full px-3 py-1.5 text-sm bg-white border rounded ">
-                  <QuoraSearch
-                    onClick={() => searchRef.current.focus()}
-                    className="p-0.5 hover:cursor-pointer"
-                  />{" "}
-                  <input
-                    ref={searchRef}
-                    placeholder="Search Quora"
-                    className="outline-none"
-                  />
-                </div> */}
-                {/* Try Quora+ */}
-                {width >= 1085 && (
-                  <button className="px-3 py-1.5 text-sm font-semibold hover:bg-gray-200 border border-gray-300 rounded-full max-w-[100px] w-full -mr-5">
-                    Try Quora+
-                  </button>
-                )}
-                {/* notifications */}
-                <QuoraNotifications
-                  onClick={() => {
-                    setSection("notifications");
-                    navigate("/notifications");
-                  }}
-                  className={`cursor-pointer [&>path]:stroke-white`}
-                  style={{
-                    width: `${50 * f}`,
-                    height: `${46 * f}`,
-                    minWidth: 33,
-                  }}
-                />
-
-                {/* Profile picture */}
-
-                <UserProfilePicture
-                  profilePicture={user?.profilePicture}
-                  content={<Hamburger />}
-                  plusHide={plusHide}
-                  username={user?.username}
-                />
-                {/* Add Question */}
-              </div>
-            </div>
-            {/* menu items */}
-            <div
-              className={`flex items-center justify-around px-1 pt-2 [&>div]:flex [&>div]:items-center [&>:not(:last-child)]:flex-col [&>div>p]:text-sm pb-3 [&>div>p]:cursor-pointer ${
-                underlineTop === 44
-                  ? "[&>div]:after:top-[44px]"
-                  : "[&>div]:after:top-[58px]"
-              }`}
-            >
-              {/* home */}
-              <div
-                onClick={() => {
-                  setSection("home");
-                  navigate("/");
-                }}
-                className={
-                  section === "home" ? sectionBarCss : sectionBarHoverCss
-                }
-              >
-                <QuoraHome
-                  style={{
-                    width: `${38 * f}`,
-                    height: `${48 * f}`,
-                    minWidth: 33,
-                    padding: "1px",
-                  }}
-                  className={`${
-                    section === "home"
-                      ? "[&>path]:stroke-none fill-[#B92B27]"
-                      : ""
-                  }`}
-                />
-                <p
-                  className={`${
-                    section === "home" ? "text-[#B92B27] font-bold" : ""
-                  }`}
-                >
-                  Home
-                </p>
-              </div>
-              {/* following */}
-              <div
-                className={
-                  section === "following" ? sectionBarCss : sectionBarHoverCss
-                }
-                onClick={() => {
-                  setSection("following");
-                  navigate("/following");
-                }}
-              >
-                <QuoraFollowing
-                  style={{
-                    width: `${38 * f}`,
-                    height: `${48 * f}`,
-                    minWidth: 33,
-                    padding: "1.5px",
-                  }}
-                  className={`${
-                    section === "following"
-                      ? "[&>*]:stroke-white [&>*:nth-child(1)]:fill-[#B92B27]"
-                      : ""
-                  }`}
-                />
-                <p
-                  className={`${
-                    section === "following" ? "text-[#B92B27] font-bold" : ""
-                  }`}
-                >
-                  Following
-                </p>
-              </div>
-              {/* answers */}
-              <div
-                className={
-                  section === "answers" ? sectionBarCss : sectionBarHoverCss
-                }
-                onClick={() => {
-                  setSection("answers");
-                  navigate("/answers");
-                }}
-              >
-                <QuoraAnswer
-                  style={{
-                    width: `${50 * f}`,
-                    height: `${48 * f}`,
-                    minWidth: 33,
-                  }}
-                  className={`${
-                    section === "answer"
-                      ? "[&>*]:stroke-[#B92B27] [&>path:nth-child(1)]:fill-[#B92B27]"
-                      : ""
-                  }`}
-                />
-                <p
-                  className={`${
-                    section === "answer" ? "text-[#B92B27] font-bold" : ""
-                  }`}
-                >
-                  Answer
-                </p>
-              </div>
-              {/* spaces */}
-              <div
-                className={
-                  section === "spaces" ? sectionBarCss : sectionBarHoverCss
-                }
-                onClick={() => {
-                  setSection("spaces");
-                  navigate("/spaces");
-                }}
-              >
-                <QuoraSpaces
-                  style={{
-                    width: `${50 * f}`,
-                    height: `${48 * f}`,
-                    minWidth: 33,
-                  }}
-                  className={`${
-                    section === "spaces"
-                      ? "[&>:nth-child(n)]:fill-[#B92B27]"
-                      : ""
-                  }`}
-                />
-                <p
-                  className={`${
-                    section === "spaces" ? "text-[#B92B27] font-bold" : ""
-                  }`}
-                >
-                  Spaces
-                </p>
-              </div>
-              {/* language */}
-              <div
-                className={
-                  section === "globe"
-                    ? sectionBarCss.replace("41px", "44px")
-                    : sectionBarHoverCss.replace("41px", "44px")
-                }
-                onClick={() => {
-                  setSection("globe");
-                  navigate("/settings/languages");
-                }}
-              >
-                <QuoraGlobe
-                  style={{
-                    width: `${50 * f}`,
-                    height: `${48 * f}`,
-                    minWidth: 33,
-                  }}
-                  className={`${
-                    section === "globe" ? "[&>path]:stroke-[#B92B27]" : ""
-                  }`}
-                />
-                <p
-                  className={`${
-                    section === "globe" ? "text-[#B92B27] font-bold" : ""
-                  }`}
-                >
-                  Language
-                </p>
-              </div>
-
-              <div className=" [&>*:not(:empty)]:self-center h-9 font-semibold  text-white bg-[#B92B27] rounded pr-2 text-sm cursor-pointer">
-                <div className="px-3 hover:bg-[#9f2521] rounded-s-full h-full flex items-center  text-nowrap">
-                  Add Q
-                </div>
-                <IoIosArrowDown size={21} />
-              </div>
-            </div>
-          </>
-        )}
       </div>
-
-      {/* MOBILE */}
-      {width <= 552 && (
-        <>
-          <div className="fixed top-0 z-10 flex items-center justify-between w-full px-3 py-2 border-b bg-gray-50">
-            <div className="flex items-center gap-4">
-              <UserProfilePicture
-                profilePicture={user?.profilePicture}
-                content={<Hamburger />}
-                plusHide={plusHide}
-                username={user?.username}
-                imgSize={28}
-              />
-              <Link to="/">
-                <p className="text-xl font-bold" onClick={handleScrollToTop}>
-                  Home
-                </p>
-              </Link>
-            </div>
-            <div className="flex items-center justify-end w-full gap-4 ">
-              {!isToSearch ? (
-                <QuoraSearch
-                  onClick={() => {
-                    setIsToSearch(true);
-                  }}
-                  className="p-[0.01rem] hover:cursor-pointer"
-                />
-              ) : (
-                <SearchInput
-                  plusHide={plusHide}
-                  searchParams={searchParams}
-                  handleFocus={handleFocus}
-                  searchValue={searchValue}
-                  setSearchValue={setSearchValue}
-                  className={"w-[83%]"}
-                  setIsToSearch={setIsToSearch}
-                />
-              )}
-
-              <AddQuestion className="hover:cursor-pointer " />
-            </div>
-          </div>
-          <div
-            className={`fixed bottom-0 w-full z-10  bg-white shadow-[0_35px_60px_-15px_rgba(0,0,0,0.9)] flex items-center justify-around px-1 max-w-[800px] pt-2 [&>div]:flex [&>div]:items-center [&>div]:flex-col [&>div>p]:text-sm pb-5 [&_svg]:cursor-pointer `}
-          >
-            {/* home */}
-            <div
-              onClick={() => {
-                setSection("home");
-                navigate("/");
-              }}
-              className={``}
-            >
-              <QuoraHome
-                style={{
-                  width: `${38 * f}`,
-                  height: `${48 * f}`,
-                  minWidth: 33,
-                  padding: "1px",
-                }}
-                className={`${
-                  section === "home"
-                    ? "[&>path]:stroke-none fill-[#B92B27]"
-                    : ""
-                }`}
-              />
-            </div>
-            {/* following */}
-            <div
-              className={``}
-              onClick={() => {
-                setSection("following");
-                navigate("/following");
-              }}
-            >
-              <QuoraFollowing
-                style={{
-                  width: `${38 * f}`,
-                  height: `${48 * f}`,
-                  minWidth: 33,
-                  padding: "1.5px",
-                }}
-                className={`${
-                  section === "following"
-                    ? "[&>*]:stroke-white [&>*:nth-child(1)]:fill-[#B92B27]"
-                    : ""
-                }`}
-              />
-            </div>
-            {/* answer */}
-            <div
-              className={``}
-              onClick={() => {
-                setSection("answers");
-                navigate("/answers");
-              }}
-            >
-              <QuoraAnswer
-                style={{
-                  width: `${50 * f}`,
-                  height: `${48 * f}`,
-                  minWidth: 33,
-                }}
-                className={`${
-                  section === "answer"
-                    ? "[&>*]:stroke-[#B92B27] [&>path:nth-child(1)]:fill-[#B92B27]"
-                    : ""
-                }`}
-              />
-            </div>
-            {/* space */}
-            <div
-              className={``}
-              onClick={() => {
-                setSection("spaces");
-                navigate("/spaces");
-              }}
-            >
-              <QuoraSpaces
-                style={{
-                  width: `${50 * f}`,
-                  height: `${48 * f}`,
-                  minWidth: 33,
-                }}
-                className={`${
-                  section === "spaces" ? "[&>:nth-child(n)]:fill-[#B92B27]" : ""
-                }`}
-              />
-            </div>
-            {/* notifications */}
-            <div
-              className={``}
-              onClick={() => {
-                setSection("notifications");
-                navigate("/notifications");
-              }}
-            >
-              <QuoraNotifications
-                style={{
-                  width: `${50 * f}`,
-                  height: `${46 * f}`,
-                  minWidth: 33,
-                }}
-                className={`${
-                  section === "notifications"
-                    ? "[&>path]:stroke-[#B92B27] [&>:first-child]:fill-[#B92B27]"
-                    : ""
-                }`}
-              />
-            </div>
-          </div>
-          {/* <div
-            onMouseDown={(e) => {
-              e.target.style.width = "100px";
-            }}
-            onMouseUp={(e) => {
-              e.target.style.width = "2.5rem";
-            }}
-            className="w-10 m-5 text-center transition-all bg-orange-500 select-none aspect-square active:text-white active:place-content-center active:text-4xl"
-          >
-            राम
-          </div> */}
-        </>
-      )}
       {/* <div className="p-5 text-center text-balance first-letter:text-4xl first-letter:text-red-500">
         {"राम ".repeat(10000)}
       </div> */}

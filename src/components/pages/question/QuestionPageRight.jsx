@@ -9,8 +9,6 @@ import {
   useAccessTokenStore,
   useBaseURLStore,
   useIsToAnswerStore,
-  useOpenModelStore,
-  useUnderlineToStore,
 } from "../../../../Store/model";
 import { handleFollowing } from "../../../utils/handlerFetch";
 
@@ -24,6 +22,7 @@ function QuestionPageRight({
   isDownvoted,
   itsOwnQuestion,
   data,
+  responsiveShow = true,
 }) {
   // state
   const [isFollowingState, setIsFollowingState] = React.useState(isFollowing);
@@ -90,7 +89,7 @@ function QuestionPageRight({
           isDownvoted={isDownvotedState}
         />
       </div>
-      <Ads />
+      {responsiveShow && <Ads />}
     </div>
   );
 }

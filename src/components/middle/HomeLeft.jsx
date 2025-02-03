@@ -2,9 +2,16 @@ import React from "react";
 import { FiPlus } from "react-icons/fi";
 import { useOpenModelStore } from "../../../Store/model";
 import { Link } from "react-router-dom";
+import useResize from "../../hooks/useResize";
 
 function HomeLeft() {
   const setOpenModel = useOpenModelStore((state) => state.setOpenModel);
+
+  // responsive
+  const { width } = useResize();
+  if (width < 1085) {
+    return null;
+  }
   return (
     <div className="relative">
       <div

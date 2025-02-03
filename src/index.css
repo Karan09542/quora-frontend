@@ -520,3 +520,13 @@ input[class="general-radio"]:checked + label:has(> .report)::before {
 .not-found-page p + p span:hover {
   text-decoration: underline;
 }
+
+.question-grid {
+  display: grid;
+  grid-template-columns: 656px minmax(100px,354px);
+}
+@media screen and (max-width: 1000px) {
+  .question-grid {
+    grid-template-columns: minmax(min-content,656px);
+  }
+}

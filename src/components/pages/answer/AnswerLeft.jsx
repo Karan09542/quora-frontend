@@ -1,7 +1,13 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Menu from "../../comp_util/Menu";
 
-function AnswerLeft() {
+function AnswerLeft({
+  response_width,
+  threshholdWidth = 552,
+  margin_top,
+  margin_bottom = "8px",
+}) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -22,10 +28,23 @@ function AnswerLeft() {
     },
   ];
 
+  if (response_width < threshholdWidth) {
+    return (
+      <div
+        style={{ "--margin-top": margin_top, "--margin-bottom": margin_bottom }}
+      >
+        <Menu
+          pathMenu={sideMenu}
+          currentPath={location?.pathname}
+          className={`mb-[var(--margin-bottom)] [&>div]:mt-[var(--margin-top)]`}
+        />
+      </div>
+    );
+  }
   return (
     <div className="relative">
       <div
-        className={` max-w-[160px] max-h-[80vh] overflow-y-auto mx-auto first:text-[#282829] first:font-semibold  w-full fixed scroll-bar-toggle-visibility`}
+        className={` max-w-[160px] max-h-[80vh] overflow-y-auto mx-auto first:text-[#282829] first:font-semibold  w-full sticky top-20 scroll-bar-toggle-visibility`}
       >
         <p className="px-4 pb-1.5">Questions</p>
         <hr />

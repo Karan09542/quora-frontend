@@ -37,16 +37,19 @@ function Search() {
       {openModel === "create post" && <CreatePost />}
       {openModel === "add language" && <OtherLanguagePopup />}
       {openModel === "display mode" && <DisplayModePopup />}
+      {openModel === "filter" && <SearchLeft isFixed={true} />}
 
       <div>
         <Navbar />
         <div
-          className={`grid grid-cols-[160px_572px_1fr] max-w-[1200px] mx-auto  [&>div]:w-full gap-x-4 ${
-            width <= 552 ? "mt-16" : "mt-5"
-          } px-7`}
+          className={`grid max-[780px]:grid-cols-[minmax(300px,780px)]  grid-cols-[160px_572px_1fr] max-w-[1200px] mx-auto  [&>div]:w-full gap-x-4 ${
+            width <= 552 ? "mt-16 px-3" : "mt-5 px-7"
+          } `}
         >
-          <SearchLeft />
-          <SearchMid />
+          {width > 780 && (
+            <SearchLeft responsive_width={width} threshold_width={780} />
+          )}
+          <SearchMid responsive_width={width} threshold_width={780} />
         </div>
       </div>
     </>

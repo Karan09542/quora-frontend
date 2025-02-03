@@ -2,9 +2,9 @@ import React from "react";
 import QuoraDraftComponent from "./QuoraDraftComponent";
 import { IoIosArrowDown } from "react-icons/io";
 
-function DraftMid() {
+function DraftMid({ className }) {
   return (
-    <div>
+    <div className={`${className}`}>
       <div className="mb-2">
         <div className="flex justify-between mb-2 [&>:first-child]:font-semibold [&>:first-child]:text-[vaar(--text-dark)] child-flex ">
           <span>1 Draft</span>
