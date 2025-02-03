@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import UserDefaultImage from "../../../assets/user.png";
 import EditPen from "../../../assets/profile/editPen.svg?react";
 import SpaceShare from "../../../assets/spaceImage/spaceShare.svg?react";
@@ -40,7 +40,15 @@ import { toast } from "react-toastify";
 import outSideClose from "../../../hooks/outSideClose";
 import TippyPopup from "../../comp_util/tippy/TippyPopup";
 import Menu from "../../comp_util/Menu";
-function ProfileLeft({ profileUser, setProfileUser }) {
+import Loading from "../../comp_util/Loading";
+
+const LazyProfileRight = React.lazy(() => import("./ProfileRight"));
+function ProfileLeft({
+  profileUser,
+  setProfileUser,
+  responsive,
+  responsive_width,
+}) {
   const pathMenu = [
     {
       name: `profile`,
@@ -85,7 +93,6 @@ function ProfileLeft({ profileUser, setProfileUser }) {
     return acc;
   }, {});
 
-  const navigate = useNavigate();
   const location = useLocation();
 
   let currentPath = decodeURIComponent(location?.pathname?.split("/")?.pop());
@@ -235,7 +242,11 @@ function ProfileLeft({ profileUser, setProfileUser }) {
 
   if (!profileUser) return <div className="w-[572px]"></div>;
   return (
-    <div className="w-[572px]">
+    <div
+      className={`max-w-[572px] w-full ${
+        responsive_width < 552 ? "mt-10" : ""
+      }`}
+    >
       {/* user left */}
       <div>
         {/* profile */}
@@ -481,6 +492,16 @@ function ProfileLeft({ profileUser, setProfileUser }) {
             </>
           )}
         </div>
+
+        {/* responsive profile right */}
+        {responsive && (
+          <Suspense fallback={<Loading />}>
+            <LazyProfileRight
+              profileUser={profileUser}
+              setProfileUser={setProfileUser}
+            />
+          </Suspense>
+        )}
         {/* menu sections */}
         <Menu pathMenu={pathMenu} currentPath={currentPath} />
         <Heading

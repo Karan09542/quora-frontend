@@ -14,7 +14,7 @@ const Menu = ({ pathMenu, currentPath, color, className }) => {
               onClick={() => {
                 navigate(menu?.navigate);
               }}
-              className={`relative font-medium  capitalize px-2 py-4 ${
+              className={`min-w-[55px] text-ellipsis text-nowrap overflow-hidden relative font-medium  capitalize px-2 py-4 ${
                 menu?.navigate === currentPath
                   ? "text-[#B92B27] bottom-border after:bg-[var(--bottom-border-color)]"
                   : "text-[var(--text-color-93)] hover:bg-[#00000008]"

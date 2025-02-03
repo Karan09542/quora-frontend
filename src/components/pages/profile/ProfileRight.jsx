@@ -112,7 +112,7 @@ function ProfileRight({ profileUser }) {
                 } mb-1.5`}
               >
                 {index > 2 ? (
-                  <div className="bg-[#F1F2F2] rounded-full [&>svg]:w-[24px] [&>svg]:h-[24px] [&>svg]:p-1 [&>svg>*]:stroke-[2px]">
+                  <div className="bg-[#F1F2F2]  [&>svg]:aspect-square rounded-full [&>svg]:w-[24px] [&>svg]:h-[24px] [&>svg]:p-1 [&>svg>*]:stroke-[2px]">
                     {item?.svg}
                   </div>
                 ) : (

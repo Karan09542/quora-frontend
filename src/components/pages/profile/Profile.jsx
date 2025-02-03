@@ -20,7 +20,9 @@ import PostAnswer from "../../quoraComponents/PostAnswer";
 import DisplayModePopup from "../../general-page/DisplayModePopup";
 import PageNotFound from "../../general-page/PageNotFound";
 import Loading from "../../comp_util/Loading";
+import useResize from "../../../hooks/useResize";
 function Profile() {
+  const { width } = useResize();
   const baseURL = useBaseURLStore((state) => state.baseURL);
   const user = useUserStore((state) => state.user);
   const profileUser = useProfileUserStore((state) => state.profileUser);
@@ -97,12 +99,18 @@ function Profile() {
       {openModel === "display mode" && <DisplayModePopup />}
 
       {profileUser && (
-        <div className="w-[1072px] bg-white mx-auto flex p-7 gap-x-28">
+        <div
+          className={`${
+            width > 1070 ? "w-[1072px] gap-x-28" : " gap-x-5"
+          } bg-white mx-auto flex p-7 `}
+        >
           <ProfileLeft
             profileUser={profileUser}
             setProfileUser={setProfileUser}
+            responsive={width < 900}
+            responsive_width={width}
           />
-          <ProfileRight profileUser={profileUser} />
+          {width > 900 ? <ProfileRight profileUser={profileUser} /> : null}
         </div>
       )}
       {!profileUser && <PageNotFound />}
