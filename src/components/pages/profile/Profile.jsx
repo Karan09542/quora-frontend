@@ -101,8 +101,10 @@ function Profile() {
       {profileUser && (
         <div
           className={`${
-            width > 1070 ? "w-[1072px] gap-x-28" : " gap-x-5"
-          } bg-white mx-auto flex p-7 `}
+            width > 1070
+              ? "w-[1072px] gap-x-28 p-7"
+              : "w-full max gap-x-5 py-5 px-3"
+          } bg-white mx-auto flex  `}
         >
           <ProfileLeft
             profileUser={profileUser}

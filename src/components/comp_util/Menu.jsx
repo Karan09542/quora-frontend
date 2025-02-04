@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Menu = ({ pathMenu, currentPath, color, className }) => {
+const Menu = ({ pathMenu, currentPath, color, className, isHr = true }) => {
   const navigate = useNavigate();
   return (
     <div className={`${className} sticky w-full z-[1] pt-0.5 bg-white top-12`}>
@@ -25,7 +25,7 @@ const Menu = ({ pathMenu, currentPath, color, className }) => {
           );
         })}
       </div>
-      <hr />
+      {isHr && <hr />}
     </div>
   );
 };

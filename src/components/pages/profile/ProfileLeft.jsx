@@ -503,7 +503,13 @@ function ProfileLeft({
           </Suspense>
         )}
         {/* menu sections */}
-        <Menu pathMenu={pathMenu} currentPath={currentPath} />
+        <Menu
+          pathMenu={pathMenu}
+          currentPath={currentPath}
+          className={"overflow-x-auto"}
+          isHr={false}
+        />
+        <hr />
         <Heading
           heading={<span className="capitalize">{menu[currentPath]}</span>}
           isHr={false}
