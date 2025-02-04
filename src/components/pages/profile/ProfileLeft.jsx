@@ -442,7 +442,7 @@ function ProfileLeft({
                     <div
                       className="mt-1 content"
                       dangerouslySetInnerHTML={{
-                        __html: handleDraftToHtml(isShowMore?.text),
+                        __html: isShowMore?.text,
                       }}
                     />
                   )}
