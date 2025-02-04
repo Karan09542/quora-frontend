@@ -507,9 +507,17 @@ function ProfileLeft({
           pathMenu={pathMenu}
           currentPath={currentPath}
           className={"overflow-x-auto"}
-          isHr={false}
+          // isHr={false}
+          style={{
+            top:
+              responsive_width < 552
+                ? "36px"
+                : responsive_width < 1085 && responsive_width > 552
+                ? "132px"
+                : "",
+          }}
         />
-        <hr />
+        {/* <hr /> */}
         <Heading
           heading={<span className="capitalize">{menu[currentPath]}</span>}
           isHr={false}
