@@ -926,11 +926,26 @@ const Navbar = () => {
                 </p>
               </div>
 
-              <div className=" [&>*:not(:empty)]:self-center h-9 font-semibold  text-white bg-[#B92B27] rounded pr-2 text-sm cursor-pointer">
-                <div className="px-3 hover:bg-[#9f2521] rounded-s-full h-full flex items-center  text-nowrap">
+              <div className=" [&>*:not(:empty)]:self-center h-9 font-semibold  text-white bg-[#B92B27] rounded text-sm cursor-pointer">
+                <div
+                  onClick={() => {
+                    setOpenModel("create post");
+                    setUnderlineTo("add question");
+                  }}
+                  className="px-3 hover:bg-[#9f2521] rounded-s h-full flex items-center  text-nowrap"
+                >
                   Add Q
                 </div>
-                <IoIosArrowDown size={21} />
+                <Tippy
+                  content={<TippyPopup popupOptions={addQuestionPopupList} />}
+                  interactive={true}
+                  trigger="click"
+                  className="[&>div]:p-0 [&>div]:text-white [&>div]:drop-shadow-[0_0px_0px_rgba(0,0,0,0.4)] text-[#282829] [&>div:first-child]:bg-white [&>div:first-child]:rounded-lg"
+                >
+                  <div className="hover:bg-[#9f2521] rounded-l h-full flex items-center rounded-r px-1 ">
+                    <IoIosArrowDown size={21} />
+                  </div>
+                </Tippy>
               </div>
             </div>
           </>
@@ -940,7 +955,7 @@ const Navbar = () => {
       {/* MOBILE */}
       {width <= 552 && (
         <>
-          <div className="fixed top-0 z-10 flex items-center justify-between w-full px-3 py-2 border-b bg-gray-50">
+          <div className="fixed top-0 z-10 flex items-center justify-between w-full px-3 py-2 border-b gap-7 bg-gray-50">
             <div className="flex items-center gap-4">
               <UserProfilePicture
                 profilePicture={user?.profilePicture}
@@ -970,7 +985,7 @@ const Navbar = () => {
                   handleFocus={handleFocus}
                   searchValue={searchValue}
                   setSearchValue={setSearchValue}
-                  className={"w-[83%]"}
+                  // className={"w-[83%]"}
                   setIsToSearch={setIsToSearch}
                 />
               )}
