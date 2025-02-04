@@ -116,7 +116,7 @@ const AnswerQuestionTempelate = ({
               </span>
             </div>
             {/* rightFlex */}
-            <div className="flex max-[552px]:[&_svg]:w-5 max-[552px]:gap-1 items-center gap-2 mt-2 [&_span]:rounded-full hover:[&_span]:bg-gray-100 [&_span]:p-2 ">
+            <div className="flex max-[552px]:[&_svg]:w-5  max-[552px]:[&_svg]:h-5 max-[552px]:gap-0.5 items-center gap-2 mt-2 [&_span]:rounded-full hover:[&_span]:bg-gray-100 [&_span]:p-2 ">
               <Tippy content="Downvote" className="py-0.5">
                 <span>
                   <Downvote
