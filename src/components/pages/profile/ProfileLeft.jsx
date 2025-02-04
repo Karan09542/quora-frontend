@@ -431,7 +431,7 @@ function ProfileLeft({
 
                   {isShowMore?.right ? (
                     <div
-                      className="mt-1 content"
+                      className="mt-1 [&_img]:block [&_img]:mx-auto w-full [&_img]:w-full content"
                       dangerouslySetInnerHTML={{
                         __html: handleDraftToHtml(
                           profileUser?.credentials?.description
@@ -440,7 +440,7 @@ function ProfileLeft({
                     />
                   ) : (
                     <div
-                      className="mt-1 content"
+                      className="mt-1 content w-full [&_iframe]:w-full [&_iframe]:h-[300px]"
                       dangerouslySetInnerHTML={{
                         __html: isShowMore?.text,
                       }}
