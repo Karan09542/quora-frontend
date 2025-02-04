@@ -127,11 +127,16 @@ export const handleDraftToHtml = (postJson) => {
       // .replace(/~/g, "\\textasciitilde{}")
       // .replace(/\^/g, "\\^{}")
       // .replace(/\\/g, "\\textbackslash{}");
-      return katex.renderToString(latex, {
+      return `<span class="math">${katex.renderToString(latex, {
         // throwOnError: false,
         displayMode: true,
         strict: "ignore",
-      });
+      })}</span>`;
+      // return katex.renderToString(latex, {
+      //   // throwOnError: false,
+      //   displayMode: true,
+      //   strict: "ignore",
+      // });
     }
   );
 

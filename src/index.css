@@ -142,6 +142,7 @@ body {
   background-color: #e6e7e8;
   padding: 2px 4px;
   border-radius: 3px;
+
 }
 
 .content .code {
@@ -349,6 +350,12 @@ body {
 .katex-display > .katex > .katex-mathml {
   display: flex;
 }
+.math  .katex-mathml {
+  overflow: auto hidden;
+  scrollbar-width: thin;
+}
+
+
 
 input[class="general-radio"] {
   display: none;
