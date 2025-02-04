@@ -373,7 +373,8 @@ function ProfileLeft({
                 {profileUser?.totalFollowing} following
               </span>
             </div>
-            {!profileUser?.isOwnProfile && (
+            {/* buttons */}
+            {!profileUser?.isOwnProfile && responsive_width > 552 && (
               <div className="flex items-center mt-3 gap-x-2">
                 <FollowingButton
                   onClick={() => {
@@ -492,6 +493,49 @@ function ProfileLeft({
             </>
           )}
         </div>
+        {/* buttons */}
+        {!profileUser?.isOwnProfile && responsive_width <= 552 && (
+          <div className="flex items-center mt-3 gap-x-2">
+            <FollowingButton
+              onClick={() => {
+                handleFollowing(profileUser?._id, baseURL, accessToken);
+                setIsFollowing(!isFollowing);
+              }}
+              isFollowing={isFollowing}
+              setIsFollowing={setIsFollowing}
+              staticIsFollowing={profileUser?.isFollowing}
+            />
+            <NotifyButton staticIsNotify={false} />
+            <AskButton />
+            <Tippy
+              content={
+                !isMore ? (
+                  "More"
+                ) : (
+                  <TippyPopup popupOptions={morePopupList} placement="bottom" />
+                )
+              }
+              className={`[&>:nth-child(1)]:p-0 ${
+                !isMore
+                  ? "px-3 py-1.5"
+                  : " bg-transparent [&>:nth-child(2)]:drop-shadow-[0_0px_0px_rgba(0,0,0,0.9)] [&>:nth-child(2)]:text-white [&>:nth-child(2)]:z-10"
+              }`}
+              interactive={true}
+              placement={!isMore ? "top" : "bottom"}
+              offset={[0, 9]}
+              delay={[0, isMore ? 100000 : 100]}
+              hideOnClick={false}
+              onClickOutside={() => {
+                hideAll();
+                setIsMore(false);
+              }}
+            >
+              <div onClick={() => setIsMore(!isMore)}>
+                <IconCircle Icon={ThreeDots} />
+              </div>
+            </Tippy>
+          </div>
+        )}
 
         {/* responsive profile right */}
         {responsive && (
