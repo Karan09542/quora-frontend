@@ -439,7 +439,12 @@ function ProfileLeft({
                       }}
                     />
                   ) : (
-                    <div>{isShowMore?.text}</div>
+                    <div
+                      className="mt-1 content"
+                      dangerouslySetInnerHTML={{
+                        __html: handleDraftToHtml(isShowMore?.text),
+                      }}
+                    />
                   )}
 
                   {!isShowMore?.right && (
