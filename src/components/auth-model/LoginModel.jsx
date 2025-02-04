@@ -97,14 +97,14 @@ function LoginModel() {
             width <= 500 && "h-full"
           }`}
         >
-          <div className="pt-5 px-7">
+          <div className="min-[552px]:pt-5 min-[552px]:px-7 max-[552px]:px-5">
             <div className=" text-center leading-[0]">
-              <QuoraLogo className="fill-[#B92B27] mx-auto w-full" />
+              <QuoraLogo className="[&>*]:fill-[#B92B27] mx-auto w-full" />
               <p className="text-[0.95rem] font-[700] text-gray-600 text-balance leading-4">
                 A place to share knowledge and better understand the world
               </p>
             </div>
-            <div className="grid grid-cols-2 pt-12 pb-7 gap-7">
+            <div className="min-[552px]:grid min-[552px]:grid-cols-2 pt-12 min-[552px]:pb-7 min-[552px]:gap-7 max-[552px]:flex max-[552px]:flex-col max-[552px]:flex-col-reverse">
               {/* Login with */}
               <div>
                 <p className="text-[0.8rem] text-balance text-gray-400">
@@ -136,7 +136,7 @@ function LoginModel() {
                 </div>
               </div>
               {/* or traditional login */}
-              <div className="border-l ">
+              <div className="min-[552px]:border-l ">
                 <div className="px-4">
                   <h2 className="mb-2">Login</h2>
                   <hr />
