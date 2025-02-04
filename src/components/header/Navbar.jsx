@@ -52,6 +52,7 @@ import TippyPopup from "../comp_util/tippy/TippyPopup";
 import Pen from "../../assets/answer/pen.svg?react";
 import SearchInput from "./SearchInput";
 import UserProfilePicture from "./UserProfilePicture";
+
 const Navbar = () => {
   const user = useUserStore((state) => state.user);
   const [f, setF] = useState(0.75);
@@ -1055,7 +1056,7 @@ const Navbar = () => {
                   minWidth: 33,
                 }}
                 className={`${
-                  section === "answer"
+                  section === "answers"
                     ? "[&>*]:stroke-[#B92B27] [&>path:nth-child(1)]:fill-[#B92B27]"
                     : ""
                 }`}

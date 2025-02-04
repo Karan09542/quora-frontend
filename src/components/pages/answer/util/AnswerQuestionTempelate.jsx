@@ -71,7 +71,7 @@ const AnswerQuestionTempelate = ({
           {/* BUTTONS */}
           <div className="flex items-center justify-between">
             {/* leftFlex */}
-            <div className="flex [&>span]:px-3.5 [&>span]:py-[0.4rem]  [&>span:first-child]:border [&>span]:rounded-full items-center  mt-1 text-sm font-semibold text-gray-500 child-flex">
+            <div className="flex max-[552px]:[&_span]:text-xs max-[552px]:[&_svg]:w-[1.2rem]  [&>span]:px-3.5 [&>span]:py-[0.4rem]  [&>span:first-child]:border [&>span]:rounded-full items-center  mt-3 text-sm font-semibold text-gray-500 child-flex">
               <span
                 onClick={() => {
                   setIsToAnswer(true);
@@ -116,7 +116,7 @@ const AnswerQuestionTempelate = ({
               </span>
             </div>
             {/* rightFlex */}
-            <div className="flex items-center gap-2 mt-2 [&>span]:rounded-full hover:[&>span]:bg-gray-100 [&>span]:p-2 ">
+            <div className="flex max-[552px]:[&_svg]:w-5 max-[552px]:gap-1 items-center gap-2 mt-2 [&_span]:rounded-full hover:[&_span]:bg-gray-100 [&_span]:p-2 ">
               <Tippy content="Downvote" className="py-0.5">
                 <span>
                   <Downvote
