@@ -87,8 +87,8 @@ function QuestionPage() {
         </Suspense>
       )}
       <div
-        // grid-cols-[656px_minmax(100px,354px)] max-w-[1200px]
-        className={` grid question-grid mx-auto [&>div]:w-full gap-x-4 ${
+        // grid-cols-[656px_minmax(100px,354px)]
+        className={` grid question-grid mx-auto max-w-[1200px] [&>div]:w-full gap-x-4 ${
           width <= 552 ? "mt-16 px-3" : "mt-5 px-7"
         } `}
       >
