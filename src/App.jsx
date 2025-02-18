@@ -9,7 +9,6 @@ import Loading from "./components/comp_util/Loading";
 function App() {
   const isLogin = useIsLoginStore((state) => state.isLogin);
   globalThis.hariom = () => "हर हर महादेव";
-  console.log("isLogin", isLogin);
   const [searchParams] = useSearchParams();
 
   if (isLogin === null) return <Loading />;
