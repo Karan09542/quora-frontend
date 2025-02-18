@@ -32,7 +32,7 @@ export const useShouldFetchUserStore = create((set) => ({
 }));
 
 export const useIsLoginStore = create((set) => ({
-  isLogin: false,
+  isLogin: null,
   setIsLogin: (boolean) => set({ isLogin: boolean }),
 }));
 

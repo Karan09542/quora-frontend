@@ -4,12 +4,15 @@ import AuthenticateModel from "./components/auth-model/AuthenticateModel";
 import { useIsLoginStore } from "../Store/model";
 import Application from "./components/general-page/Application";
 import { useSearchParams } from "react-router-dom";
+import Loading from "./components/comp_util/Loading";
 
 function App() {
   const isLogin = useIsLoginStore((state) => state.isLogin);
   globalThis.hariom = () => "हर हर महादेव";
-
+  console.log("isLogin", isLogin);
   const [searchParams] = useSearchParams();
+
+  if (isLogin === null) return <Loading />;
   return (
     <div className="bg-[#f7f7f8] h-full">
       <AuthenticateModel />
