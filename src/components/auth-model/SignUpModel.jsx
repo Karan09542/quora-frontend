@@ -67,7 +67,7 @@ function SignupModel() {
           <CrossButton size={36} onClick={() => setOpenModel(null)} />
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="px-4 [&>div>input]:mb-4 mb-14">
+          <div className="px-4 [&>div>input]:mb-4 mb-14 [&>div_:is(input)]:mb-4">
             <h1 className="pt-2 pb-5 text-lg font-bold">Sign up</h1>
             <InputField
               register={register("username", {
@@ -103,6 +103,9 @@ function SignupModel() {
               label={"Password"}
               fieldName={"set a password"}
             />
+            {errors.password && (
+              <ErrorMessage message={errors.password.message} />
+            )}
             <InputField
               type="password"
               register={register("confirmPassword", {
