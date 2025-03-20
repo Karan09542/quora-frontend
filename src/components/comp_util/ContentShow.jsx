@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import { handleDraftToHtml } from "../../utils/fn_utils";
 import useHighlight from "../../hooks/useHighlight";
 
 const ContentShow = ({ content, isShowMore, setIsShowMore, query }) => {
   const highlightRef = React.useRef(null);
   useHighlight({ query, highlightRef });
+
+  const handleClick = useCallback(() => {
+    if (!isShowMore?.right) {
+      setIsShowMore((prev) => ({ ...prev, right: true }));
+    }
+  }, [isShowMore, setIsShowMore]);
+  const convertedHtml = useMemo(() => handleDraftToHtml(content), [content]);
   return (
     <div
-      onClick={() => {
-        if (isShowMore?.right) return;
-        setIsShowMore((prev) => ({ ...prev, right: true }));
-      }}
+      onClick={handleClick}
       className={`relative ${!isShowMore?.right ? "cursor-pointer" : ""}`}
     >
       {isShowMore?.right ? (
@@ -18,7 +22,7 @@ const ContentShow = ({ content, isShowMore, setIsShowMore, query }) => {
           className="mt-1 [&_img]:block [&_img]:mx-auto w-full [&_img]:w-full content"
           ref={highlightRef}
           dangerouslySetInnerHTML={{
-            __html: handleDraftToHtml(content),
+            __html: convertedHtml,
           }}
         />
       ) : (
