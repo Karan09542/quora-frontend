@@ -59,7 +59,7 @@ const [randomAds, setRandomAds] = useState(adsList[Math.floor(Math.random() * ad
           to={randomAds.link}
           target="_blank"
         >
-          <img src={randomAds.src} alt="ads" className="aspect-[7/4] object-cover" />
+          <img src={randomAds.src} alt="ads" className="aspect-[7/4] object-contain" />
           <h1 className="text-[0.8rem] ">{randomAds.title}</h1>
           <p className="text-red-300 ">{randomAds.description}</p>
           <div className="animate-ping h-4 w-4 bg-[#ff2020] rounded-full absolute top-0 right-0"></div>
