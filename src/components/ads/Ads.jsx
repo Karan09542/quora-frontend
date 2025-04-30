@@ -32,7 +32,7 @@ const adsList = [
     link: "https://airbnb-frontend-jet.vercel.app/",
   },
   {
-    src: "https://firebasestorage.googleapis.com/v0/b/airbnb-cln-892e5.appspot.com/o/ha-boliyein%2Fsite-image%2Fsite-tall.jpeg?alt=media&token=1ac077d7-0a55-4de4-832b-49a3db46b81c",
+    src: "https://firebasestorage.googleapis.com/v0/b/airbnb-cln-892e5.appspot.com/o/ha-boliyein%2Fsite-image%2Fsite-wide.png?alt=media&token=d29b9105-01d5-4431-a8f4-bf4e8dc7c075",
     title: "Chat Open Source with anyone",
     description: "That's another one Chat project",
     link: "https://ha-boliyein.onrender.com/"
