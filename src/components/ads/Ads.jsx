@@ -39,11 +39,11 @@ const adsList = [
   }
 ]
 
-const randomAds = useState(adsList[Math.floor(Math.random() * adsList.length)]);
+const [randomAds, setRandomAds] = useState(adsList[Math.floor(Math.random() * adsList.length)]);
 
   useEffect(() => {
     setInterval(() => {
-      adsList[Math.floor(Math.random() * adsList.length)]
+      setRandomAds(adsList[Math.floor(Math.random() * adsList.length)])
     }, 5000);
   }, []);
   
