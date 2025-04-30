@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import addAirbnb from "../../assets/ads-airbnb.webp";
 import { Link } from "react-router-dom";
 import { useUserStore } from "../../../Store/model";
@@ -23,6 +23,30 @@ function Ads() {
     }
     addRef.current.querySelector("img").style.filter = "";
   }, [theme, location]);
+
+const adsList = [
+  {
+    src: addAirbnb,
+    title: "Book Now at AirBnb",
+    description: "That's another one project",
+    link: "https://airbnb-frontend-jet.vercel.app/",
+  },
+  {
+    src: "https://firebasestorage.googleapis.com/v0/b/airbnb-cln-892e5.appspot.com/o/ha-boliyein%2Fsite-image%2Fsite-tall.jpeg?alt=media&token=1ac077d7-0a55-4de4-832b-49a3db46b81c",
+    title: "Chat Open Source with anyone",
+    description: "That's another one Chat project",
+    link: "https://ha-boliyein.onrender.com/"
+  }
+]
+
+const randomAds = useState(adsList[Math.floor(Math.random() * adsList.length)]);
+
+  useEffect(() => {
+    setInterval(() => {
+      adsList[Math.floor(Math.random() * adsList.length)]
+    }, 5000);
+  }, []);
+  
   return (
     // bg-stone-100
     <div
@@ -32,12 +56,12 @@ function Ads() {
       <div>
         <Link
           className="relative"
-          to="https://airbnb-frontend-jet.vercel.app/"
+          to={randomAds.link}
           target="_blank"
         >
-          <img src={addAirbnb} alt="ads-airbnb" />
-          <h1 className="text-[0.8rem] ">Book Now at AirBnb</h1>
-          <p className="text-red-300 ">That's another one project</p>
+          <img src={randomAds.src} alt="ads" />
+          <h1 className="text-[0.8rem] ">{randomAds.title}</h1>
+          <p className="text-red-300 ">{randomAds.description}</p>
           <div className="animate-ping h-4 w-4 bg-[#ff2020] rounded-full absolute top-0 right-0"></div>
         </Link>
       </div>
