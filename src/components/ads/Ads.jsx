@@ -32,7 +32,7 @@ const adsList = [
     link: "https://airbnb-frontend-jet.vercel.app/",
   },
   {
-    src: "https://firebasestorage.googleapis.com/v0/b/airbnb-cln-892e5.appspot.com/o/ha-boliyein%2Fsite-image%2Fsite-wide.png?alt=media&token=d29b9105-01d5-4431-a8f4-bf4e8dc7c075",
+    src: "https://firebasestorage.googleapis.com/v0/b/airbnb-cln-892e5.appspot.com/o/ha-boliyein%2Fsite-image%2Fsite-tall.jpeg?alt=media&token=1ac077d7-0a55-4de4-832b-49a3db46b81c",
     title: "Chat Open Source with anyone",
     description: "That's another one Chat project",
     link: "https://ha-boliyein.onrender.com/"
@@ -59,7 +59,7 @@ const [randomAds, setRandomAds] = useState(adsList[Math.floor(Math.random() * ad
           to={randomAds.link}
           target="_blank"
         >
-          <img src={randomAds.src} alt="ads" />
+          <img src={randomAds.src} alt="ads" className="aspect-[7/4] object-cover" />
           <h1 className="text-[0.8rem] ">{randomAds.title}</h1>
           <p className="text-red-300 ">{randomAds.description}</p>
           <div className="animate-ping h-4 w-4 bg-[#ff2020] rounded-full absolute top-0 right-0"></div>
